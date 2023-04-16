@@ -25,6 +25,7 @@ sudo service apache2 restart<br>
 sudo service vsftpd restart<br>
 
 cd /var/www/html<br>
+sudo git clone https://github.com/jeddyhhh/ziptie<br>
 sudo git clone https://github.com/ggerganov/llama.cpp<br>
 cd llama.cpp<br>
 sudo make<br>
@@ -36,7 +37,7 @@ sudo chmod -R 775 /var/www<br>
 sudo service apache2 restart<br>
 sudo service vsftpd restart<br>
 
-go to http://localhost to use ziptie<br>
+go to http://localhost/ziptie to use ziptie<br>
 
 After restart of WSL (not for Ubuntu server):<br>
 WSL doesn't auto start services, so you have to make a startWSLServer.bat:<br>
