@@ -1,0 +1,167 @@
+html, body{height: 100%;width: 100%; margin:0;}
+body{ background-image: url("includes/images/1.png"); }
+
+#botOutputText{
+    width: 100%;
+    height: 50%;
+}
+
+#promptText{
+    width: 100%;
+    font-size: 22px;
+}
+
+#serverStatus{
+    width: 100%;
+    height: 130px;
+    font-size: 12px;
+}
+
+#mainDiv{
+    margin: 0 auto;
+    width: 75%;
+}
+
+#promptInputDivOptions{
+    background-color: lightgrey;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+#promptSubmitKillOptions{
+    background-color: lightgrey;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+#checkScreenResume{
+    animation: blinker 3s linear infinite;
+    }
+      
+    @keyframes blinker {
+    50% {
+          opacity: 0;
+        }
+}
+
+#checkScreenPause, #checkScreenResume{
+    color: white;
+}
+
+.img1 {
+    background-image: url('includes/images/1.png');
+}
+.img2 {
+    background-image: url('includes/images/2.png');
+}
+.img3 {
+    background-image: url('includes/images/3.png');
+}
+.img4 {
+    background-image: url('includes/images/4.png');
+}
+.img5 {
+    background-image: url('includes/images/5.png');
+}
+.img6 {
+    background-image: url('includes/images/6.png');
+}
+.img7 {
+    background-image: url('includes/images/7.png');
+}
+.img8 {
+    background-image: url('includes/images/8.png');
+}
+.img9 {
+    background-image: url('includes/images/9.png');
+}
+.img10 {
+    background-image: url('includes/images/10.png');
+}
+.img11 {
+    background-image: url('includes/images/11.png');
+}
+.img12 {
+    background-image: url('includes/images/12.png');
+}
+.img13 {
+    background-image: url('includes/images/13.png');
+}
+.img14 {
+    background-image: url('includes/images/14.png');
+}
+.img15 {
+    background-image: url('includes/images/15.png');
+}
+.img16 {
+    background-image: url('includes/images/16.png');
+}
+.img17 {
+    background-image: url('includes/images/17.png');
+}
+.img18 {
+    background-image: url('includes/images/18.png');
+}
+.img19 {
+    background-image: url('includes/images/19.png');
+}
+.img20 {
+    background-image: url('includes/images/20.png');
+}
+
+@font-face {
+    font-family: 'Chicago';
+    src: url('includes/fonts/ChicagoFLF.ttf'); /*URL to font*/
+}
+@font-face {
+    font-family: 'Chicago2';
+    src: url('includes/fonts/sysfont.woff2'); /*URL to font*/
+}
+@font-face {
+    font-family: 'Win95';
+    src: url('includes/fonts/w95fa.woff'); /*URL to font*/
+}
+@font-face {
+    font-family: 'Espy';
+    src: url('includes/fonts/EspySansRevivedTwelve-Regul.ttf'); /*URL to font*/
+}
+@font-face {
+    font-family: 'Goth';
+    src: url('includes/fonts/LucidaBlackletterRegular.ttf'); /*URL to font*/
+}
+
+.font1 textarea{
+    font-family: monospace;
+}
+.font2 textarea{
+    font-family: 'Chicago';
+}
+.font3 textarea{
+    font-family: 'Chicago2';
+}
+.font4 textarea{
+    font-family: 'Win95';
+}
+.font5 textarea{
+    font-family: 'Espy';
+}
+.font6 textarea{
+    font-family: 'Goth';
+}
+
+
+#archiveOutputText{
+    width: 100%;
+    height: 300px;
+    resize: vertical;
+}
+
+#archiveMain{
+    width: 80%;
+    margin: 0 auto;
+}
+
+#archiveInfoDiv{
+    background-color: lightgray;
+}
+
