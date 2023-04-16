@@ -23,11 +23,12 @@ sudo service vsftpd restart<br>
 
 cd /var/www/html<br>
 sudo git clone https://github.com/jeddyhhh/ziptie<br>
+cd ziptie<br>
 sudo git clone https://github.com/ggerganov/llama.cpp<br>
 cd llama.cpp<br>
 sudo make<br>
 
-sudo chown -R yourusername:www-data /var/www<br>
+sudo chown -R ["yourusername"]:www-data /var/www<br>
 sudo chmod -R 775 /var/www<br>
 sudo service apache2 restart<br>
 sudo service vsftpd restart<br>
