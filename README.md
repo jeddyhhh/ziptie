@@ -27,7 +27,7 @@ sudo git clone https://github.com/ggerganov/llama.cpp<br>
 cd llama.cpp<br>
 sudo make<br>
 
-Transfer files via ftp to /var/www/html<br>
+Transfer files via ftp to /var/www/html/ziptie/llama.cpp/models<br>
 
 sudo chown -R yourusername:www-data /var/www<br>
 sudo chmod -R 775 /var/www<br>
