@@ -3,6 +3,6 @@ A web interface for llama.cpp cli written in js and php.
 
 <p align="center">
   <img src="https://github.com/jeddyhhh/ziptie/blob/main/includes/images/ziptie.jpg">
-  <figcaption>ziptie - a i5 2400 with 8gb of RAM running 7b models</figcaption>
+  ziptie - a i5 2400 with 8gb of RAM running 7b models
 </p>
 
