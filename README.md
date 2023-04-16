@@ -19,35 +19,35 @@ sudo apt update
 sudo apt install apache2 php libapache2-mod-php git build-essential vsftpd
 
 sudo ufw allow "Apache Full"<br>
-sudo nano /etc/vsftpd.conf - enable write
-sudo nano /etc/apache2/mods-enabled/dir.conf - change to index.php first
-sudo service apache2 restart
-sudo service vsftpd restart
+sudo nano /etc/vsftpd.conf - enable write<br>
+sudo nano /etc/apache2/mods-enabled/dir.conf - change to index.php first<br>
+sudo service apache2 restart<br>
+sudo service vsftpd restart<br>
 
-cd /var/www/html
-sudo git clone https://github.com/ggerganov/llama.cpp
-cd llama.cpp
-sudo make
+cd /var/www/html<br>
+sudo git clone https://github.com/ggerganov/llama.cpp<br>
+cd llama.cpp<br>
+sudo make<br>
 
-Transfer files via ftp to /var/www/html
+Transfer files via ftp to /var/www/html<br>
 
-sudo chown -R yourusername:www-data /var/www
-sudo chmod -R 775 /var/www
-sudo service apache2 restart
-sudo service vsftpd restart
+sudo chown -R yourusername:www-data /var/www<br>
+sudo chmod -R 775 /var/www<br>
+sudo service apache2 restart<br>
+sudo service vsftpd restart<br>
 
-go to http://localhost to use ziptie
+go to http://localhost to use ziptie<br>
 
-After restart of WSL (not for Ubuntu server):
-WSL doesn't auto start services, so you have to make a startWSLServer.bat:
-wsl sudo service apache2 start
-wsl sudo service vsftpd start
-WSL is now running in the background with the web server/ftp server, you can now go to http://localhost
+After restart of WSL (not for Ubuntu server):<br>
+WSL doesn't auto start services, so you have to make a startWSLServer.bat:<br>
+wsl sudo service apache2 start<br>
+wsl sudo service vsftpd start<br>
+WSL is now running in the background with the web server/ftp server, you can now go to http://localhost<br>
 
-To update llama.cpp:
-cd /var/www/html/llama.cpp
-git stash
-git pull origin master
+To update llama.cpp:<br>
+cd /var/www/html/llama.cpp<br>
+git stash<br>
+git pull origin master<br>
 make
 
 
