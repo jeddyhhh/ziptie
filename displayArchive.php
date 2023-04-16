@@ -1,5 +1,5 @@
 <head>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="includes/style.css">
     <script src="includes/jquery-3.6.4.min.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>ZIPTIE: Output Archive.</title>
