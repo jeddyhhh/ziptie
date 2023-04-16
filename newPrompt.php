@@ -86,7 +86,7 @@ USER: $prompt";
 
 
 if($modelType == 1){
-    $selectedModel = "ggml-vicuna-7b-4bit-rev1.bin";
+    $selectedModel = "/var/www/html/ziptie/llama.cpp/models/vicuna-7b/ggml-vicuna-7b-4bit-rev1.bin";
     $sMN = "Vicuna 7B 1.0";
 } else if($modelType == 2){
     $selectedModel = "alpaca-7b-ggml-model-q4_0.bin";
@@ -170,8 +170,8 @@ if($prefPrompt != ''){
 $filename = '/var/www/html/output.txt';
 if(filesize($filename) > $outputTxtSize){
     $randomNumber = time();
-    shell_exec("cp /var/www/html/output.txt /var/www/html/output-$randomNumber.txt");
-    shell_exec("rm /var/www/html/output.txt");
+    shell_exec("cp /var/www/html/ziptie/output.txt /var/www/html/ziptie/output-$randomNumber.txt");
+    shell_exec("rm /var/www/html/ziptie/output.txt");
 }
 
 $currentDate = date("F j, Y, g:i a"); 
@@ -190,7 +190,7 @@ if(shell_exec("pgrep -l main") == true){
     }
 }
 
-chdir('/var/www/html/llama.cpp');
-shell_exec("./main -m $selectedModel $selectedRamChoice --keep $keepChoice --seed $seedChoice $threadChoice -n $tokens -c $contextSize $selectedPrefPrompt --n_parts 1 --top_k $topk $selectedEos --top_p $topp $fullPrompt --repeat_penalty $repeatP --repeat_last_n $lastNPChoice --temp $temp $selectedTimestamp | tee -a /var/www/html/output.txt 2>&1");
+chdir('/var/www/html/ziptie/llama.cpp');
+shell_exec("./main -m $selectedModel $selectedRamChoice --keep $keepChoice --seed $seedChoice $threadChoice -n $tokens -c $contextSize $selectedPrefPrompt --n_parts 1 --top_k $topk $selectedEos --top_p $topp $fullPrompt --repeat_penalty $repeatP --repeat_last_n $lastNPChoice --temp $temp $selectedTimestamp | tee -a /var/www/html/ziptie/output.txt 2>&1");
 //shell_exec("./main -m ggml-vicuna-7b-4bit-rev1.bin --keep -1 -n $tokens -c 2024 --n_parts 1 --top_k $topk --top_p $topp -p 'A chat between a curious human and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the humans questions. ### Human: Hello, Assistant. ### Assistant: Hello. How may I help you today? ### Human: Please tell me the largest city in Europe. ### Assistant: Sure. The largest city in Europe is Moscow, the capital of Russia. ### Human: $prompt' --repeat_penalty 1.2 --repeat_last_n 1024 --temp $temp | awk '{ print strftime(\"%H:%M:%S\"), $0; fflush(); }\' | tee -a /var/www/html/output.txt 2>&1");
 ?>
