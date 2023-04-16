@@ -11,16 +11,13 @@ I wrote this interface because the version of llama.cpp that oogabooga web-ui us
 
 This web-ui is only for one shot prompts and does not use the interactive mode, it will take 1 prompt and generate text until it runs out of tokens.
 
-The install instructions are assuming a clean install of Ubuntu server or WSL.
-
-<b>Install instructions/commands</b> (clean install of Ubuntu server or WSL):
+<b>Install instructions/commands (clean install of Ubuntu server or WSL)</b>:
 
 sudo apt update
 sudo apt install apache2 php libapache2-mod-php git build-essential vsftpd
 
 sudo ufw allow "Apache Full"<br>
 sudo nano /etc/vsftpd.conf - enable write<br>
-sudo nano /etc/apache2/mods-enabled/dir.conf - change to index.php first<br>
 sudo service apache2 restart<br>
 sudo service vsftpd restart<br>
 
