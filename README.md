@@ -32,18 +32,18 @@ sudo chmod -R 775 /var/www<br>
 sudo service apache2 restart<br>
 sudo service vsftpd restart<br>
 
-Transfer model files via ftp to /var/www/html/ziptie/llama.cpp/models/["model-name"]/["model-name.bin"]<br>
+Transfer model files via ftp to /var/www/html/ziptie/llama.cpp/models/["model-name"]/["model-name"].bin<br>
 Example: /var/www/html/ziptie/llama.cpp/models/vicuna-7b/ggml-model-q4_0.bin<br>
 
 go to http://localhost/ziptie to use ziptie<br>
 
-After restart of WSL (not for Ubuntu server):<br>
+<b>After restart of WSL (not for Ubuntu server):</b><br>
 WSL doesn't auto start services, so you have to make a startWSLServer.bat:<br>
 wsl sudo service apache2 start<br>
 wsl sudo service vsftpd start<br>
-WSL is now running in the background with the web server/ftp server, you can now go to http://localhost<br>
+WSL is now running in the background with the web server/ftp server, you can now go to http://localhost/ziptie<br>
 
-To update llama.cpp:<br>
+<b>To update llama.cpp:</b><br>
 cd /var/www/html/llama.cpp<br>
 git stash<br>
 git pull origin master<br>
