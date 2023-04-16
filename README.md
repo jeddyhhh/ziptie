@@ -27,12 +27,13 @@ sudo git clone https://github.com/ggerganov/llama.cpp<br>
 cd llama.cpp<br>
 sudo make<br>
 
-Transfer files via ftp to /var/www/html/ziptie/llama.cpp/models<br>
-
 sudo chown -R yourusername:www-data /var/www<br>
 sudo chmod -R 775 /var/www<br>
 sudo service apache2 restart<br>
 sudo service vsftpd restart<br>
+
+Transfer model files via ftp to /var/www/html/ziptie/llama.cpp/models/["model name"]/["model-name.bin"]<br>
+Example: /var/www/html/ziptie/llama.cpp/models/vincuna-7b/ggml-model-q4_0.bin
 
 go to http://localhost/ziptie to use ziptie<br>
 
