@@ -13,7 +13,7 @@ This web-ui is only for one shot prompts and does not use the interactive mode, 
 
 The install instructions are assuming a clean install of Ubuntu server or WSL.
 
-Install instructions (clean install of Ubuntu server or WSL):
+<b>Install instructions/commands</b> (clean install of Ubuntu server or WSL):
 
 sudo apt update
 sudo apt install apache2 php libapache2-mod-php git build-essential vsftpd
