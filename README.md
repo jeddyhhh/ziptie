@@ -18,7 +18,7 @@ Install instructions:
 sudo apt update
 sudo apt install apache2 php libapache2-mod-php git build-essential vsftpd
 
-sudo ufw allow "Apache Full"
+sudo ufw allow "Apache Full"<br>
 sudo nano /etc/vsftpd.conf - enable write
 sudo nano /etc/apache2/mods-enabled/dir.conf - change to index.php first
 sudo service apache2 restart
