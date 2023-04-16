@@ -13,8 +13,8 @@ This web-ui is only for one shot prompts and does not use the interactive mode, 
 
 <b>Install instructions/commands (clean install of Ubuntu server or WSL)</b>:
 
-sudo apt update
-sudo apt install apache2 php libapache2-mod-php git build-essential vsftpd
+sudo apt update<br>
+sudo apt install apache2 php libapache2-mod-php git build-essential vsftpd<br>
 
 sudo ufw allow "Apache Full"<br>
 sudo nano /etc/vsftpd.conf - enable write<br>
