@@ -32,8 +32,8 @@ sudo chmod -R 775 /var/www<br>
 sudo service apache2 restart<br>
 sudo service vsftpd restart<br>
 
-Transfer model files via ftp to /var/www/html/ziptie/llama.cpp/models/["model name"]/["model-name.bin"]<br>
-Example: /var/www/html/ziptie/llama.cpp/models/vincuna-7b/ggml-model-q4_0.bin
+Transfer model files via ftp to /var/www/html/ziptie/llama.cpp/models/["model-name"]/["model-name.bin"]<br>
+Example: /var/www/html/ziptie/llama.cpp/models/vicuna-7b/ggml-model-q4_0.bin<br>
 
 go to http://localhost/ziptie to use ziptie<br>
 
