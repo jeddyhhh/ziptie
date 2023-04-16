@@ -11,6 +11,8 @@ I wrote this interface because the version of llama.cpp that oogabooga web-ui us
 
 This web-ui is only for one shot prompts and does not use the interactive mode, it will take 1 prompt and generate text until it runs out of tokens.
 
+The install instructions are assuming a clean install of Ubuntu server or WSL.
+
 Install instructions:
 
 sudo apt update
@@ -36,13 +38,13 @@ sudo service vsftpd restart
 
 go to http://localhost to use ziptie
 
-After restart of WSL:
+After restart of WSL (not for Ubuntu server):
 WSL doesn't auto start services, so you have to make a startWSLServer.bat:
 wsl sudo service apache2 start
 wsl sudo service vsftpd start
 WSL is now running in the background with the web server/ftp server, you can now go to http://localhost
 
-Update llama.cpp:
+To update llama.cpp:
 cd /var/www/html/llama.cpp
 git stash
 git pull origin master
