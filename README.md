@@ -39,9 +39,9 @@ Example: /var/www/html/ziptie/llama.cpp/models/vicuna-7b/ggml-model-q4_0.bin<br>
 go to http://localhost/ziptie to use ziptie<br>
 
 <b>Usage:</b><br>
-On very first load, hit the "Reload All Settings" button, this is scan the models and prompts you have transfered and put them into a list for the website to read.<br>
-Edit any parameters in settings and hit "Save"<br>
-You can now hit "Submit Prompt", it will now start generating text.<br>
+1. On very first load, hit the "Reload All Settings" button, this is scan the models and prompts you have transfered and put them into a list for the website to read.<br>
+2. Edit any parameters in settings and hit "Save"<br>
+3. You can now hit "Submit Prompt", it will now start generating text.<br>
 
 <b>After restart of WSL (not for Ubuntu server):</b><br>
 WSL doesn't auto start services, so you have to make a startWSLServer.bat:<br>
