@@ -1,13 +1,18 @@
 <?php
 session_start();
 $newFontSize = $_SESSION['fontSize'];
-if(isset($_GET['var1'])) {
-  $fontSize = $_GET['var1'];
-  $_SESSION['fontSize'] = $fontSize;
+if(isset($_GET['var2'])) {
+  $_SESSION['fontSize'] = $_GET['var2'];
   $newFontSize = $_SESSION['fontSize'];
 }
 
-$botOutput = file_get_contents('output.txt');
+if($_GET['var1'] == ''){
+  $outputName = "output-default.txt";
+} else {
+  $outputName = $_GET['var1'];
+}
+
+$botOutput = file_get_contents($outputName);
 echo '<textarea id="botOutputText" style="font-size:'.$newFontSize.'; background-color: white;">' . $botOutput . '</textarea>';
 echo '<script>
         var textarea = document.getElementById("botOutputText");

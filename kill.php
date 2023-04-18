@@ -1,4 +1,5 @@
 <?php
+$outputName = $_GET['var1'];
 if(shell_exec("pgrep -l main") == true){
     shell_exec("pkill main");
     if(shell_exec("pgrep -l main") == true){
@@ -6,7 +7,7 @@ if(shell_exec("pgrep -l main") == true){
     }
 }
 
-$fp2 = fopen('output.txt', 'a');  
+$fp2 = fopen($outputName, 'a');  
 fwrite($fp2, "\r\n");
 fwrite($fp2, "Generation Cancelled");  
 fwrite($fp2, "\r\n");

@@ -7,7 +7,7 @@
 
 <?php
   $path = './'; 
-  $files = glob($path.'/output-*');
+  $files = glob($path.'/output*');
 
   foreach(array_reverse($files) as $value) {
     $archiveOutput = file_get_contents($value);

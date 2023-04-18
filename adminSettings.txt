@@ -1,0 +1,8 @@
+SubmitPromptLock=off
+KillGenerationLock=off
+OutputLock=on
+TokensLock=
+ThreadsLock=
+ModelLock=
+InitPromptLock=
+AUTOLOAD=settings-default.txt

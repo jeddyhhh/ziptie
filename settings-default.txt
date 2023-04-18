@@ -1,0 +1,24 @@
+Write a screenplay set in the world of "Seinfeld", the gang gets into trouble, make it funny.
+1000
+0.9
+50
+0.8
+
+
+2048
+1.2
+1
+2
+2
+-1
+1024
+-1
+1
+2
+100000
+
+img1
+24px
+font2
+undefined
+output-default.txt

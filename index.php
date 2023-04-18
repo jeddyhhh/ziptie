@@ -1,18 +1,19 @@
 <!-- ZIPTIE: a llama.cpp web-ui written in Javascript and PHP - Jed Hyndman 2023 -->
 <?php
 session_start();
-$_SESSION['fontSize'] = '12px';
 ?>
 <html>
 
   <head>
     <link rel="stylesheet" href="includes/style.css">
     <script src="includes/jquery-3.6.4.min.js"></script>
+    <script src="scripts.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>ZIPTIE: The ai bot server that is held together with zipties.</title>
   </head>
 
   <body class='img1'>
+    <input type='hidden' id='loadedFontSize'></input>
     <div id='mainDiv'>
 
       <div id='screenOutputMain'>
@@ -29,160 +30,71 @@ $_SESSION['fontSize'] = '12px';
       <button id='changeOutputFont' style='float:right; display:inline'>Change Screen Font</button>
       <button id='changeBackgroundButton' style='float:right; display:inline'>Change Site Background</button>
       
-      <!-- background/font change -->
-      <script>
-        $(document).ready(function() {
-          $('#changeBackgroundButton').click(function() {
-            cBC = $('body').attr('class'); 
-            cBCNum = cBC.replace(/^\D+/g, '');
-
-            if(cBCNum < 20){
-              $('body').addClass('img' + (+cBCNum + 1)).removeClass(cBC);
-            } else {
-              $('body').addClass('img1').removeClass(cBC);
-            }
-          });
-
-          $('#changeOutputFont').click(function() {
-            cOC = $('#serverOutput').attr('class'); 
-            cOCNum = cOC.replace(/^\D+/g, '');
-
-            if(cOCNum < 6){
-              $('#serverOutput').addClass('font' + (+cOCNum + 1)).removeClass(cOC);
-            } else {
-              $('#serverOutput').addClass('font1').removeClass(cOC);
-            }
-          });
-
-          $('#outputFontSmaller').click(function() {
-            currentFontSize = $("#botOutputText").css('font-size');
-            currentFontSize = parseFloat(currentFontSize);
-            currentFontSize = Math.floor(currentFontSize);
-
-            if(currentFontSize > 8 && (+currentFontSize - 2) > 8){
-              newFontSize = +currentFontSize - 2;
-              $('#serverOutput').load('loadOutput.php?var1=' + newFontSize + "px");
-            }
-          });
-
-          $('#outputFontBigger').click(function() {
-            currentFontSize = $("#botOutputText").css('font-size');
-            currentFontSize = parseFloat(currentFontSize);
-            currentFontSize = Math.floor(currentFontSize);
-
-            if(currentFontSize > 8){
-              newFontSize = +currentFontSize + 2;
-              $('#serverOutput').load('loadOutput.php?var1=' + newFontSize + "px");
-            }
-          });
-
-        });
-      </script>
-
       <br>
-
-      <script>
-        $('#serverOutput').load('loadOutput.php');
-        $("#checkScreenResume").css("display","inline");
-
-        function reloadChat(){
-          $('#serverOutput').load('loadOutput.php');
-        }
-        var timeout = setInterval(reloadChat, 2000); 
-        
-        function viewOutputArchive(){
-          window.open('displayArchive.php', 'Output Archive'); 
-        }
-      </script>
-
-      <script>
-        function submitPrompt(){
-          pT = $('#promptText').val();
-          tokens = $('#tokens').val();
-          temp = $('#temp').val();
-          topk = $('#topk').val();
-          topp = $('#topp').val();
-          promptType = $('#selectPrePrompt').val();
-          modelType = $('#selectModel').val();
-          contextSize = $('#cSize').val();
-          repeatP = $('#repeatP').val();
-          ramChoice = $('input[name="ramChoice"]:checked').val();
-          eosChoice = $('input[name="eosChoice"]:checked').val();
-          stampChoice = $('input[name="stampChoice"]:checked').val();
-          keepChoice = $('#keepChoice').val();
-          lastNPChoice = $('#lastNPChoice').val();
-          seedChoice = $('#seedChoice').val();
-          randomPrompt = $('input[name="randomPrompt"]:checked').val();
-          threadChoice = $('#threadChoice').val();
-          prefPrompt = $('#prefPromptText').val();
-          outputTxtSize = $('#outputTxtSize').val();
-          pT = encodeURI(pT);
-          prefPrompt = encodeURI(prefPrompt);
-          $('#serverOutput').load('newPrompt.php?var1=' + pT + '&var2=' + tokens + '&var3=' + temp + '&var4=' + topk + '&var5=' + topp + '&var6=' + promptType + '&var7=' + modelType 
-          + '&var8=' + contextSize + '&var9=' + repeatP + '&var10=' + ramChoice + '&var11=' + eosChoice + '&var12=' + stampChoice + '&var13=' + keepChoice + '&var14=' + lastNPChoice
-          + '&var15=' + seedChoice + '&var16=' + randomPrompt + '&var17=' + threadChoice + '&var18=' + outputTxtSize + '&var19=' + prefPrompt);
-          console.log('newPrompt.php?var1=' + pT + '&var2=' + tokens + '&var3=' + temp + '&var4=' + topk + '&var5=' + topp + '&var6=' + promptType + '&var7=' + modelType 
-          + '&var8=' + contextSize + '&var9=' + repeatP + '&var10=' + ramChoice + '&var11=' + eosChoice + '&var12=' + stampChoice + '&var13=' + keepChoice + '&var14=' + lastNPChoice
-          + '&var15=' + seedChoice + '&var16=' + randomPrompt + '&var17=' + threadChoice + '&var18=' + outputTxtSize + '&var19=' + prefPrompt);
-        }
-
-        function killPrompt(){
-          //document.getElementById("promptSubmit").disabled = false;
-          $('#serverOutput').load('kill.php');
-        }
-
-        function pauseOutput(){
-          $("#checkScreenPause").css("display","inline"); 
-          $("#checkScreenResume").css("display","none");
-          clearInterval(timeout);
-          console.log("Output paused. Maybe.");
-        }
-
-        function resumeOutput(){
-          $("#checkScreenResume").css("display","inline"); 
-          $("#checkScreenPause").css("display","none");
-          var timeout = setInterval(reloadChat, 2000); 
-          console.log("Output resumed. Maybe.");
-        }
-      </script>
-
       <br>
 
       <div id='promptInputDivOptions'>
-        ~Options~
+        ~Settings~
+        Setting Name: 
+        <button id='saveSettings' onclick="saveSettings(1);">Save</button>
+        <button id='saveAsDefaultSettings' onclick="$saveSettings(2);">Save as default</button>
+        Save Name: <input type='text' id='saveSettingName' size="12"></input>
+        <input type='hidden' id='hiddenOutputName'></input>
+        <input type='hidden' id='hiddenSavedSettingName'></input>
+        
+        
+        <?php
+          $filename = 'avaliableSettings.txt';
+          $eachlines = file($filename, FILE_IGNORE_NEW_LINES);
+        ?>
+        Load Setting: <select id="selectSetting">
+          <option id='blankOption' value='settings-default.txt'></option>
+            <?php
+              foreach($eachlines as $lines){
+                $settingName = $lines;
+                echo "<option value='".$settingName."'>$settingName</option>";
+              }
+            ?>
+        </select>
+        <button id='reloadSettingsButton' onclick='window.location.reload();'>Reload All Settings</button>
         <br>
+        <?php
+        $filename = 'avaliableModels.txt';
+        $eachlines = file($filename, FILE_IGNORE_NEW_LINES);
+        ?>
         Model: <select id="selectModel">
-                  <option value="1">Vicuna 7B 1.0 (8gb+)</option>
-                  <option value="6">Vicuna 7B 1.0 Uncensored (8gb+)</option>
-                  <option value="10">Vicuna 13B 1.0 (16gb+)</option>
-                  <option value="12">Vicuna 13B 1.1 (16gb+)</option>
-                  <option value="11">GPT4xAlpaca 13B (16gb+)</option>
-                  <option value="4">GPT4ALL 7B (8gb+)</option>
-                  <option value="2">Alpaca 7B (8gb+)</option>
-                  <option value="9">Alpaca 7B LoRa (8gb+)</option>
-                  <option value="13">Koala 13B (16gb+)</option>
-                  <option value="14">Instruct 13B (Slow) (16gb+)</option>
-                  <option value="5">Aleksey Vicuna 7B (Slow) (8gb+)</option>
-                  <option value="3">Koala 7B (Slow) (8gb+)</option>
-                  <option value="7">Vicuna 7B 1.1 (Slow) (8gb+)</option>
-                  <option value="8">Vicuna 7B 1.1 2 (Slow) (8gb+)</option>
-                </select>
-        <br>
-        Pre Prompt: <select id="selectPrePrompt">
-                      <option value="1">Default Vicuna</option>
-                      <option value="2">Do It Anyway (DIA)</option>
-                      <option value="3">Default Alpaca</option>
-                      <option value="4">Do Anything Now (DAN)</option>
-                      <option value="5">Chat with Bob</option>
-                      <option value="6">Default Koala</option>
-                      <option value="7">No Pre Prompt</option>
-                      <option value="8">Aleksey Vicuna Default</option>
-                    </select>
+            <?php
+              foreach($eachlines as $lines){
+                $model = explode("~", $lines);
+                $modelName = $model[0];
+                $modelFileName = $model[1];
+                echo "<option value='".$modelFileName."'>$modelName</option>";
+              }
+            ?>
+        </select>
 
         <br>
+
+        <?php
+        $filename2 = 'avaliablePrompts.txt';
+        $eachlines2 = file($filename2, FILE_IGNORE_NEW_LINES);
+        ?>
+        Init Prompt: <select id="selectPrePrompt">
+            <?php
+              foreach($eachlines2 as $lines){
+                $prompt = explode("~", $lines);
+                $promptName = $prompt[0];
+                $promptlFileName = $prompt[1];
+                echo "<option value='".$promptlFileName."'>$promptName</option>";
+              }
+            ?>
+        </select>
+          
+        <br>
+
         Prefix Prompt (not required): <input type='text' id='prefPromptText' value=''></input>
         <br>
-        Prompt:
+        User Prompt:
         <br>
         <input type='text' id='promptText' rows='2' value='Write a screenplay set in the world of "Seinfeld", the gang gets up to mischief, make it funny.'></input>
         <br>
@@ -226,8 +138,7 @@ $_SESSION['fontSize'] = '12px';
         <br>                          
         CPU threads to be used: <input type="number" id="threadChoice" min="1" max="512" value='-1'></input> (-1 = all)
         <br>
-        Maximum size of output.txt before archiving (in bytes): <input type="number" id="outputTxtSize" min="1" max="99999999" value='100000'></input>
-        <br>
+
         <br>
 
         <div id='promptSubmitKillOptions'>
@@ -236,33 +147,32 @@ $_SESSION['fontSize'] = '12px';
             </div>
           </div>
           <button id='promptSubmit' onclick='submitPrompt()'>Submit Prompt</button>
+
+          Max size of output.txt before archiving (bytes): <input type="number" id="outputTxtSize" min="1" max="99999999" value='100000'></input>
+          output.txt name append: <input type='text' id='outputNameAppend' size="12"></input>
+          <?php
+          $filename = 'avaliableOutputs.txt';
+          $eachlines = file($filename, FILE_IGNORE_NEW_LINES);
+          ?>
+          Avaliable outputs: <select id="selectOutput">
+              <?php
+                foreach($eachlines as $lines){
+                  $outputName = $lines;
+                  echo "<option value='".$outputName."'>$outputName</option>";
+                }
+              ?>
+          </select>
           <br>
-          <button id='killPrompt' onclick='killPrompt()'>Kill Bot Generation</button>
+          <button id='killPrompt' onclick='killPrompt();'>Kill Bot Generation</button>
         </div>
 
       </div>
-
-      <script>
-        $('#isRunning').load('checkRunning.php');
-        function reloadChat2(){
-          $('#isRunning').load('checkRunning.php');
-        }
-        var timeout2 = setInterval(reloadChat2, 2000); 
-      </script>
 
       <br>
 
       <div id="serverStatusDiv">
         <textarea id='serverStatus' style='background-color: white'></textarea>
       </div>
-
-      <script>
-        $('#serverStatus').load('serverStatus.php');
-        function reloadChat2(){
-          $('#serverStatus').load('serverStatus.php');
-        }
-        var timeout2 = setInterval(reloadChat2, 5000);
-      </script>
 
     </div>
 
