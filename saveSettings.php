@@ -84,6 +84,6 @@ fclose($myfile);
 $temp3 = str_replace('settings-', '', $saveName);
 $outputName = "output-$temp3";
 $myfile2 = fopen("/var/www/html/ziptie/$outputName", "a") or die("Unable to open file!");
-fwrite($myfile2, "$outputName Saved!\n");
+fwrite($myfile2, "$saveName Saved!\n");
 fclose($myfile2);
 ?>
