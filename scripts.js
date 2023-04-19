@@ -245,7 +245,7 @@ function loadSettings(){
       $('#repeatP').val(lines[8]);
       $('input[name="ramChoice"]').val([lines[9]]);
       $('input[name="eosChoice"]').val([lines[10]]);
-      $('input[name="eosChoice"]').val([lines[11]]);
+      $('input[name="stampChoice"]').val([lines[11]]);
 
       $('#keepChoice').val(lines[12]);
       $('#lastNPChoice').val(lines[13]);
