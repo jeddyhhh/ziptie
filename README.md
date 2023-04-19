@@ -27,6 +27,8 @@ cd ziptie<br>
 
 Transfer model files via ftp to /var/www/html/ziptie/llama.cpp/models/["model-name"]/["model-name"].bin<br>
 Example: /var/www/html/ziptie/llama.cpp/models/vicuna-7b/ggml-model-q4_0.bin<br>
+<b>WSL Users: </b>You can go to `\\wsl.localhost\["distro-name"]\var\www\html\ziptie\llama.cpp\models` then drag and drop model folders to here.<br>
+["distro-name"] is usually `Ubuntu`<br>
 
 sudo chown -R ["yourusername"]:www-data /var/www/html/ziptie<br>
 sudo chmod -R 775 /var/www/html/ziptie<br>
