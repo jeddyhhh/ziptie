@@ -45,11 +45,11 @@ wsl sudo service apache2 start<br>
 wsl sudo service vsftpd start<br>
 WSL is now running in the background with the web server/ftp server, you can now go to http://localhost/ziptie<br>
 
+<b>To update ziptie:</b><br>
+run updateZiptie.sh
+
 <b>To update llama.cpp:</b><br>
-cd /var/www/html/llama.cpp<br>
-git stash<br>
-git pull origin master<br>
-make
+run updateLlama.sh
 
 
 
