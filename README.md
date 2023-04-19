@@ -7,7 +7,7 @@ A web interface for llama.cpp cli written in js, jQuery and php.
   ziptiebot - a i5 2400 with 8gb of RAM running 7b models, also what ziptie was developed on.
 </p>
 
-I wrote this interface because the version of llama.cpp that oogabooga web-ui uses doesn't compile correcly for older processes without AVX2 support, the current mainline llama.cpp (which is command line only) does compile and run correctly on older processors but I didn't want to use cli to interact with the program.
+I wrote this interface because the version of llama.cpp that oogabooga web-ui (at the time, not sure if this has changed) uses doesn't compile correcly for older processes without AVX2 support, the current mainline llama.cpp (which is command line only) does compile and run correctly on older processors but I didn't want to use cli to interact with the program.
 
 This web-ui is only for one shot prompts and does not use the interactive mode, it will take 1 prompt and generate text until it runs out of tokens.
 
@@ -44,11 +44,11 @@ You can change site settings in adminSettings.txt, there is options to lock cert
 3. You can now hit "Submit Prompt", it will now start generating text.<br>
 
 <b>After restart of WSL (not for Ubuntu server):</b><br>
-WSL doesn't auto start services, so you have to make a startWSLServer.bat:<br>
+WSL doesn't auto start services, so you need to run these commands after a restart of WSL and/or Windows:<br>
 `wsl sudo service apache2 start`<br>
 `wsl sudo service vsftpd start`<br>
 WSL is now running in the background with the web server/ftp server, you can now go to http://localhost/ziptie<br>
-.bat files for these scripts are in `includes/wsl_scripts` of this repository<br>
+.bat files for these scripts are in `includes/wsl-scripts` of this repository<br>
 
 <b>To update ziptie:</b><br>
 run `./updateZiptie.sh`
