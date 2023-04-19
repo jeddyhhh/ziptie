@@ -4,7 +4,7 @@ A web interface for llama.cpp cli written in js, jQuery and php.
 <p align="center">
   <img src="https://github.com/jeddyhhh/ziptie/blob/main/includes/images/ziptie.jpg">
   <br>
-  ziptiebot - a i5 2400 with 8gb of RAM running 7b models
+  ziptiebot - a i5 2400 with 8gb of RAM running 7b models, also what ziptie was developed on.
 </p>
 
 I wrote this interface because the version of llama.cpp that oogabooga web-ui uses doesn't compile correcly for older processes without AVX2 support, the current mainline llama.cpp (which is command line only) does compile and run correctly on older processors but I didn't want to use cli to interact with the program.
@@ -18,23 +18,19 @@ sudo apt install apache2 php libapache2-mod-php git build-essential vsftpd<br>
 
 sudo ufw allow "Apache Full"<br>
 sudo nano /etc/vsftpd.conf - enable write<br>
-sudo service apache2 restart<br>
-sudo service vsftpd restart<br>
+
+cd /var/www/html<br>
+sudo git clone https://github.com/jeddyhhh/ziptie<br>
+cd ziptie<br>
+./installLlama.sh<br>
+
+Transfer model files via ftp to /var/www/html/ziptie/llama.cpp/models/["model-name"]/["model-name"].bin<br>
+Example: /var/www/html/ziptie/llama.cpp/models/vicuna-7b/ggml-model-q4_0.bin<br>
 
 sudo chown -R ["yourusername"]:www-data /var/www<br>
 sudo chmod -R 775 /var/www<br>
 sudo service apache2 restart<br>
 sudo service vsftpd restart<br>
-
-Transfer model files via ftp to /var/www/html/ziptie/llama.cpp/models/["model-name"]/["model-name"].bin<br>
-Example: /var/www/html/ziptie/llama.cpp/models/vicuna-7b/ggml-model-q4_0.bin<br>
-
-cd /var/www/html<br>
-sudo git clone https://github.com/jeddyhhh/ziptie<br>
-cd ziptie<br>
-sudo git clone https://github.com/ggerganov/llama.cpp<br>
-cd llama.cpp<br>
-sudo make<br>
 
 go to http://localhost/ziptie to use ziptie<br>
 
