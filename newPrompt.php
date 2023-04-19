@@ -52,11 +52,12 @@ if($timestamp == 1){
 
 if($randomPrompt == 2){
     $fullPrompt == "--random-prompt";
-    $displayPrompt = "Pre/User prompts ignored, random output";
+    $displayPrompt = "~~~Pre/User prompts ignored, random output~~~";
 } else {
     $prePromptContents = file_get_contents($selectedPrePrompt);
     $fullPrompt = "$prePromptContents $prompt";
     $fullPrompt  = htmlspecialchars($fullPrompt, ENT_QUOTES);
+    $displayPrompt = $prompt;
 }
 
 if($tChoice > 0){
@@ -93,7 +94,7 @@ fwrite($fp, "\r");
 fwrite($fp, "\nNew Generation - Model: $sMN - Tokens: $tokens - Temp: $temp - Top_k: $topk - Top_p: $topp - Context Size: $contextSize - Repeat Penalty: $repeatP - Seed: $seedChoice\n");  
 $promptFileName = basename($selectedPrePrompt);
 fwrite($fp,"Init Prompt: $promptFileName\n");
-fwrite($fp,"User Prompt: $prompt\n");
+fwrite($fp,"User Prompt: $displayPrompt\n");
 fwrite($fp,"Date: $currentDate\n");
 fwrite($fp, "\r\n");
 fclose($fp);
