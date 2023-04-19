@@ -20,6 +20,7 @@ $outputTxtSize = $_GET['var18'];
 $prefPrompt = $_GET['var19'];
 $outputNameAppend = $_GET['var20'];
 $disableHChoice = $_GET['var21'];
+$altOutputName = $_GET['var22'];
 
 $url = urldecode($prompt);
 $prompt = str_replace('%20', ' ', $url);
@@ -80,12 +81,12 @@ if(filesize($filename) > $outputTxtSize){
     shell_exec("rm /var/www/html/ziptie/$outputNameAppend");
 }
 
-if(shell_exec("pgrep -l main") == true){
-    shell_exec("sudo pkill main");
-    if(shell_exec("pgrep -l main") == true){
-        shell_exec("sudo pkill main");
-    }
-}
+// if(shell_exec("pgrep -l main") == true){
+//     shell_exec("sudo pkill main");
+//     if(shell_exec("pgrep -l main") == true){
+//         shell_exec("sudo pkill main");
+//     }
+// }
 
 $outputFileName = "$outputNameAppend";
 
@@ -102,7 +103,11 @@ if($disableHChoice == 1){
     fclose($fp);
 }
 
+if($altOutputName !== ''){
+    $altOutputName = "| tee /var/www/html/ziptie/$altOutputName";
+}
+
 
 chdir('/var/www/html/ziptie/llama.cpp');
-shell_exec("./main -m $selectedModel $selectedRamChoice --keep $keepChoice --seed $seedChoice $threadChoice -n $tokens -c $contextSize $selectedPrefPrompt --n_parts 1 --top_k $topk $selectedEos --top_p $topp -p '$fullPrompt' --repeat_penalty $repeatP --repeat_last_n $lastNPChoice --temp $temp $selectedTimestamp | tee -a /var/www/html/ziptie/$outputFileName 2>&1");
+shell_exec("./main -m $selectedModel $selectedRamChoice --keep $keepChoice --seed $seedChoice $threadChoice -n $tokens -c $contextSize $selectedPrefPrompt --n_parts 1 --top_k $topk $selectedEos --top_p $topp -p '$fullPrompt' --repeat_penalty $repeatP --repeat_last_n $lastNPChoice --temp $temp $selectedTimestamp $altOutputName | tee -a /var/www/html/ziptie/$outputFileName 2>&1");
 ?>

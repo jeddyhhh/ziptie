@@ -60,8 +60,6 @@ function viewOutputArchive(){
 
 //submit prompt
 function submitPrompt(){
-    saveSettings(1);
-    
     pT = $('#promptText').val();
     tokens = $('#tokens').val();
     temp = $('#temp').val();
@@ -83,18 +81,19 @@ function submitPrompt(){
     outputTxtSize = $('#outputTxtSize').val();
     outputNameAppend = $('#outputNameAppend').val();
     disableHChoice = $('input[name="disableHChoice"]:checked').val();
+    altOutputName = $('#altOutputName').val();
     pT = encodeURI(pT);
     prefPrompt = encodeURI(prefPrompt);
 
     $('#serverOutput').load('newPrompt.php?var1=' + pT + '&var2=' + tokens + '&var3=' + temp + '&var4=' + topk + '&var5=' + topp + '&var6=' + promptType + '&var7=' + modelType 
     + '&var8=' + contextSize + '&var9=' + repeatP + '&var10=' + ramChoice + '&var11=' + eosChoice + '&var12=' + stampChoice + '&var13=' + keepChoice + '&var14=' + lastNPChoice
     + '&var15=' + seedChoice + '&var16=' + randomPrompt + '&var17=' + threadChoice + '&var18=' + outputTxtSize + '&var19=' + prefPrompt + '&var20=' + outputNameAppend
-    + "&var21=" + disableHChoice);
+    + "&var21=" + disableHChoice + "&var22=" + altOutputName);
 
     console.log('newPrompt.php?var1=' + pT + '&var2=' + tokens + '&var3=' + temp + '&var4=' + topk + '&var5=' + topp + '&var6=' + promptType + '&var7=' + modelType 
     + '&var8=' + contextSize + '&var9=' + repeatP + '&var10=' + ramChoice + '&var11=' + eosChoice + '&var12=' + stampChoice + '&var13=' + keepChoice + '&var14=' + lastNPChoice
     + '&var15=' + seedChoice + '&var16=' + randomPrompt + '&var17=' + threadChoice + '&var18=' + outputTxtSize + '&var19=' + prefPrompt + '&var20=' + outputNameAppend
-    + "&var21=" + disableHChoice);
+    + "&var21=" + disableHChoice + "&var22=" + altOutputName);
 
     $("#selectOutput").val(outputNameAppend);
 }
@@ -146,6 +145,10 @@ $(document).ready(function() {
     });
 });
 
+function disableSubmitButton(){
+    $('#promptSubmit').hide();
+}
+
 //saves settings, grabs the data via jQuery and bundles them into a request for saveSettings.php which then saves them as a .txt file.
 function saveSettings(data){
     $('#outputNameAppend').val("");
@@ -176,6 +179,7 @@ function saveSettings(data){
     saveName = $('#saveSettingName').val();
     saveAsMode = data;
     disableHChoice = $('input[name="disableHChoice"]:checked').val();
+    altOutputName = $('#altOutputName').val(); 
 
     outputName = saveName;
     outputName = outputName.replace('.txt', '');
@@ -193,7 +197,8 @@ function saveSettings(data){
     $('#serverOutput').load('saveSettings.php?var1=' + pT + '&var2=' + tokens + '&var3=' + temp + '&var4=' + topk + '&var5=' + topp + '&var6=' + promptType + '&var7=' + modelType 
     + '&var8=' + contextSize + '&var9=' + repeatP + '&var10=' + ramChoice + '&var11=' + eosChoice + '&var12=' + stampChoice + '&var13=' + keepChoice + '&var14=' + lastNPChoice
     + '&var15=' + seedChoice + '&var16=' + randomPrompt + '&var17=' + threadChoice + '&var18=' + outputTxtSize + '&var19=' + prefPrompt + '&var20=' + backgroundImage + '&var21=' + fontSize
-    + '&var22=' + fontType + '&var23=' + autoLoad + '&var24=' + outputName + '&var25=' + saveName + '&var26=' + saveAsMode + '&var27=' + disableHChoice);
+    + '&var22=' + fontType + '&var23=' + autoLoad + '&var24=' + outputName + '&var25=' + saveName + '&var26=' + saveAsMode + '&var27=' + disableHChoice
+    + '&var28=' + altOutputName);
 
     $('#outputNameAppend').val(outputName);
 }
@@ -285,6 +290,7 @@ function loadSettings(){
       $("#currentSettingName").val(settingName);
 
       $('input[name="disableHChoice"]').val([lines[24]]);
+      $('#altOutputName').val([lines[25]]); 
     });
 }
 

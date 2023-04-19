@@ -1,4 +1,4 @@
-<!-- ZIPTIE: a llama.cpp web-ui written in Javascript and PHP - Jed Hyndman 2023 -->
+<!-- ZIPTIE: a llama.cpp web-ui written in Javascript, jQuery and PHP - Jed Hyndman 2023 -->
 <?php
 session_start();
 ?>
@@ -9,7 +9,7 @@ session_start();
     <script src="includes/jquery-3.6.4.min.js"></script>
     <script src="scripts.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>ZIPTIE: The ai bot server that is held together with zipties.</title>
+    <title>ZIPTIE: llama.cpp web interface.</title>
   </head>
 
   <body class='img1'>
@@ -158,7 +158,7 @@ session_start();
             <div id='isRunning'>
             </div>
           </div>
-          <button id='promptSubmit' onclick='submitPrompt()'>Submit Prompt</button>
+          <button id='promptSubmit' onclick='submitPrompt();disableSubmitButton();'>Submit Prompt</button>
           Max size of output.txt before archiving (bytes): <input type="number" id="outputTxtSize" min="1" max="99999999" value='100000'></input>
           Output file name: <input type='text' id='outputNameAppend' size="12"></input>
           Disable new generation info?: <input type="radio" id="disableHChoice1" name="disableHChoice" value="1" checked="checked" />
@@ -168,6 +168,7 @@ session_start();
                                <label for="disableHChoice2">Yes</label>
           <br>
           <button id='killPrompt' onclick='killPrompt();'>Kill Bot Generation</button>
+          Alt. Output file name: <input type='text' id='altOutputName' value=''></input>
         </div>
 
       </div>

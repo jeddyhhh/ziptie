@@ -72,6 +72,7 @@ if(shell_exec("pgrep -l main") == true){
     echo "<font style='color: green; font-size: 20px'>Bot is NOT running. Ready for new prompt.</font>";
     echo "<script>document.getElementById('promptSubmit').disabled = false;</script>";
     echo "<script>$('#serverOutput').css('border','10px solid green');</script>";
+    echo "<script>$('#promptSubmit').show();</script>";
 
     $filename = 'adminSettings.txt';
     $eachlines = file($filename, FILE_IGNORE_NEW_LINES);
