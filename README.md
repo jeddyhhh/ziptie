@@ -18,7 +18,7 @@ This web-ui is only for one shot prompts and does not use the interactive mode, 
 `sudo apt install apache2 php libapache2-mod-php git build-essential vsftpd`<br>
 
 `sudo ufw allow "Apache Full"`<br>
-`sudo nano /etc/vsftpd.conf` - uncomment `write_enable=YES` and save<br>
+`sudo nano /etc/vsftpd.conf` - uncomment `write_enable=YES` and save.<br>
 
 `cd /var/www/html`<br>
 `sudo git clone https://github.com/jeddyhhh/ziptie`<br>
@@ -28,14 +28,14 @@ This web-ui is only for one shot prompts and does not use the interactive mode, 
 Transfer model files via ftp to `/var/www/html/ziptie/llama.cpp/models/["model-name"]/["model-name"].bin`<br>
 Example: `/var/www/html/ziptie/llama.cpp/models/vicuna-7b/ggml-model-q4_0.bin`<br>
 <b>WSL Users: </b>You can go to `\\wsl.localhost\["distro-name"]\var\www\html\ziptie\llama.cpp\models` then drag and drop model folders to here.<br>
-`["distro-name"]` is usually `Ubuntu`<br>
+`["distro-name"]` is usually `Ubuntu`.<br>
 
 `sudo chown -R ["yourusername"]:www-data /var/www/html/ziptie`<br>
 `sudo chmod -R 775 /var/www/html/ziptie`<br>
 `sudo service apache2 restart`<br>
 `sudo service vsftpd restart`<br>
 
-go to http://localhost/ziptie to use ziptie<br>
+go to http://localhost/ziptie to use ziptie.<br>
 You can change site settings in adminSettings.txt, there is options to lock certain setting fields and set a default setting file to be loaded on startup.<br>
 
 <b>Usage:</b><br>
@@ -45,16 +45,16 @@ You can change site settings in adminSettings.txt, there is options to lock cert
 
 <b>After restart of WSL (not for Ubuntu server):</b><br>
 WSL doesn't auto start services, so you have to make a startWSLServer.bat:<br>
-wsl sudo service apache2 start<br>
-wsl sudo service vsftpd start<br>
+`wsl sudo service apache2 start`<br>
+`wsl sudo service vsftpd start`<br>
 WSL is now running in the background with the web server/ftp server, you can now go to http://localhost/ziptie<br>
-.bat files for these scripts are in includes/wsl_scripts<br>
+.bat files for these scripts are in `includes/wsl_scripts` of this repository<br>
 
 <b>To update ziptie:</b><br>
-run updateZiptie.sh
+run `./updateZiptie.sh`
 
 <b>To update llama.cpp:</b><br>
-run updateLlama.sh
+run `./updateLlama.sh`
 
 
 
