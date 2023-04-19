@@ -98,7 +98,7 @@ session_start();
         <br>
         <input type='text' id='promptText' rows='2' value='Write a screenplay set in the world of "Seinfeld", the gang gets up to mischief, make it funny.'></input>
         <br>
-        Generate Random Prompt? (Ignores all pre and user prompts):  <input type="radio" id="randomPrompt1" name="randomPrompt" value="1" checked="checked" />
+        Generate Random Prompt? (Ignores all init and user prompts):  <input type="radio" id="randomPrompt1" name="randomPrompt" value="1" checked="checked" />
                                   <label for="randomPrompt1">No</label>
 
                                   <input type="radio" id="randomPrompt2" name="randomPrompt" value="2" />
