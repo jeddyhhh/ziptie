@@ -2,9 +2,9 @@
 A web interface for llama.cpp cli written in js, jQuery and php.
 
 <p align="center">
-  <img src="https://github.com/jeddyhhh/ziptie/blob/main/includes/images/screenshot.JPG" width='48%' />
+  <img src="https://github.com/jeddyhhh/ziptie/blob/main/includes/images/screenshot.JPG" width='49.5%' />
   &nbsp;
-  <img src="https://github.com/jeddyhhh/ziptie/blob/main/includes/images/ziptie.jpg" width='48%' /> 
+  <img src="https://github.com/jeddyhhh/ziptie/blob/main/includes/images/ziptie.jpg" width='49.5%' /> 
   <br>
   ziptiebot - a i5 2400 with 8gb of RAM running 7b models, also what ziptie was developed on.
 </p>
