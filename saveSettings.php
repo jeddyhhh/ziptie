@@ -25,6 +25,7 @@ $alChoice = $_GET['var23'];
 $outputNameAppend = $_GET['var24'];
 $saveName = $_GET['var25'];
 $saveAsMode = $_GET['var26'];
+$disableHChoice = $_GET['var27'];
 
 if($outputNameAppend == ""){
     $temp2 = str_replace('settings-', '', $saveName);
@@ -77,7 +78,8 @@ fwrite($myfile, "$backgroundImage\n");
 fwrite($myfile, "$fontSize\n");
 fwrite($myfile, "$fontType\n");
 fwrite($myfile, "$alChoice\n");
-fwrite($myfile, "$outputNameAppend");
+fwrite($myfile, "$outputNameAppend\n");
+fwrite($myfile, "$disableHChoice");
 fclose($myfile);
 
 //save text

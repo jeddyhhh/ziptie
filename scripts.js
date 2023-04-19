@@ -175,6 +175,7 @@ function saveSettings(data){
     outputNameAppend = $('#outputNameAppend').val();
     saveName = $('#saveSettingName').val();
     saveAsMode = data;
+    disableHChoice = $('input[name="disableHChoice"]:checked').val();
 
     outputName = saveName;
     outputName = outputName.replace('.txt', '');
@@ -192,7 +193,7 @@ function saveSettings(data){
     $('#serverOutput').load('saveSettings.php?var1=' + pT + '&var2=' + tokens + '&var3=' + temp + '&var4=' + topk + '&var5=' + topp + '&var6=' + promptType + '&var7=' + modelType 
     + '&var8=' + contextSize + '&var9=' + repeatP + '&var10=' + ramChoice + '&var11=' + eosChoice + '&var12=' + stampChoice + '&var13=' + keepChoice + '&var14=' + lastNPChoice
     + '&var15=' + seedChoice + '&var16=' + randomPrompt + '&var17=' + threadChoice + '&var18=' + outputTxtSize + '&var19=' + prefPrompt + '&var20=' + backgroundImage + '&var21=' + fontSize
-    + '&var22=' + fontType + '&var23=' + autoLoad + '&var24=' + outputName + '&var25=' + saveName + '&var26=' + saveAsMode);
+    + '&var22=' + fontType + '&var23=' + autoLoad + '&var24=' + outputName + '&var25=' + saveName + '&var26=' + saveAsMode + '&var27=' + disableHChoice);
 
     $('#outputNameAppend').val(outputName);
 }
@@ -282,6 +283,8 @@ function loadSettings(){
       $('#selectOutput').val(lines[23]);
 
       $("#currentSettingName").val(settingName);
+
+      $('input[name="disableHChoice"]').val([lines[24]]);
     });
 }
 
