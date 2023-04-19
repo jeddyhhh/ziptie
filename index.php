@@ -37,7 +37,7 @@ session_start();
         ~Settings~
         Setting Name: 
         <button id='saveSettings' onclick="saveSettings(1);">Save</button>
-        <button id='saveAsDefaultSettings' onclick="$saveSettings(2);">Save as default</button>
+        <button id='saveAsDefaultSettings' onclick="saveSettings(2);">Save as default</button>
         Save Name: <input type='text' id='saveSettingName' size="12"></input>
         <input type='hidden' id='hiddenOutputName'></input>
         <input type='hidden' id='hiddenSavedSettingName'></input>
@@ -149,12 +149,12 @@ session_start();
           <button id='promptSubmit' onclick='submitPrompt()'>Submit Prompt</button>
 
           Max size of output.txt before archiving (bytes): <input type="number" id="outputTxtSize" min="1" max="99999999" value='100000'></input>
-          output.txt name append: <input type='text' id='outputNameAppend' size="12"></input>
+          Output file name: <input type='text' id='outputNameAppend' size="12"></input>
           <?php
           $filename = 'avaliableOutputs.txt';
           $eachlines = file($filename, FILE_IGNORE_NEW_LINES);
           ?>
-          Avaliable outputs: <select id="selectOutput">
+          Avaliable Output Files: <select id="selectOutput">
               <?php
                 foreach($eachlines as $lines){
                   $outputName = $lines;
