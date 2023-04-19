@@ -11,7 +11,7 @@ I wrote this interface because the version of llama.cpp that oogabooga web-ui us
 
 This web-ui is only for one shot prompts and does not use the interactive mode, it will take 1 prompt and generate text until it runs out of tokens.
 
-<b>Install instructions/commands (clean install of Ubuntu server or WSL)</b>:
+<b>Install instructions/commands (clean install of Ubuntu server or WSL)</b>:<br>
 <b>Note for WSL users:</b> It's possible to access WSL linux files from \\wsl.localhost in Windows Explorer, you may not want to install the vsftpd package.<br>
 
 sudo apt update<br>
