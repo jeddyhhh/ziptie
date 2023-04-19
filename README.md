@@ -28,8 +28,8 @@ cd ziptie<br>
 Transfer model files via ftp to /var/www/html/ziptie/llama.cpp/models/["model-name"]/["model-name"].bin<br>
 Example: /var/www/html/ziptie/llama.cpp/models/vicuna-7b/ggml-model-q4_0.bin<br>
 
-sudo chown -R ["yourusername"]:www-data /var/www<br>
-sudo chmod -R 775 /var/www<br>
+sudo chown -R ["yourusername"]:www-data /var/www/html/ziptie<br>
+sudo chmod -R 775 /var/www/html/ziptie<br>
 sudo service apache2 restart<br>
 sudo service vsftpd restart<br>
 
