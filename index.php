@@ -25,6 +25,18 @@ session_start();
       <button id='pauseOutput' onclick='pauseOutput();'>Pause Output Display</button>
       <button id='resumeOutput' onclick='resumeOutput();'>Resume Output Display</button>
       <button id='viewOutputArchive' onclick='viewOutputArchive();'>View Output Archive (opens new tab)</button>
+      <?php
+      $filename = 'avaliableOutputs.txt';
+      $eachlines = file($filename, FILE_IGNORE_NEW_LINES);
+      ?>
+      <font id='avaliableOutputLabel'>Avaliable Output Files:</font><select id="selectOutput">
+          <?php
+            foreach($eachlines as $lines){
+              $outputName = $lines;
+              echo "<option value='".$outputName."'>$outputName</option>";
+            }
+          ?>
+      </select>
       <button id='outputFontSmaller' style='float:right; display:inline'>Font \/</button>
       <button id='outputFontBigger' style='float:right; display:inline'>Font /\</button>
       <button id='changeOutputFont' style='float:right; display:inline'>Change Screen Font</button>
@@ -147,21 +159,13 @@ session_start();
             </div>
           </div>
           <button id='promptSubmit' onclick='submitPrompt()'>Submit Prompt</button>
-
           Max size of output.txt before archiving (bytes): <input type="number" id="outputTxtSize" min="1" max="99999999" value='100000'></input>
           Output file name: <input type='text' id='outputNameAppend' size="12"></input>
-          <?php
-          $filename = 'avaliableOutputs.txt';
-          $eachlines = file($filename, FILE_IGNORE_NEW_LINES);
-          ?>
-          Avaliable Output Files: <select id="selectOutput">
-              <?php
-                foreach($eachlines as $lines){
-                  $outputName = $lines;
-                  echo "<option value='".$outputName."'>$outputName</option>";
-                }
-              ?>
-          </select>
+          Disable new generation info?: <input type="radio" id="disableHChoice1" name="disableHChoice" value="1" checked="checked" />
+                               <label for="disableHChoice1">No</label>
+
+                               <input type="radio" id="disableHChoice2" name="disableHChoice" value="2" />
+                               <label for="disableHChoice2">Yes</label>
           <br>
           <button id='killPrompt' onclick='killPrompt();'>Kill Bot Generation</button>
         </div>

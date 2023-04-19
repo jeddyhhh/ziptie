@@ -19,6 +19,7 @@ $tChoice = $_GET['var17'];
 $outputTxtSize = $_GET['var18'];
 $prefPrompt = $_GET['var19'];
 $outputNameAppend = $_GET['var20'];
+$disableHChoice = $_GET['var21'];
 
 $url = urldecode($prompt);
 $prompt = str_replace('%20', ' ', $url);
@@ -88,16 +89,19 @@ if(shell_exec("pgrep -l main") == true){
 
 $outputFileName = "$outputNameAppend";
 
-$currentDate = date("F j, Y, g:i a"); 
-$fp = fopen($outputFileName, 'a');  
-fwrite($fp, "\r");
-fwrite($fp, "\nNew Generation - Model: $sMN - Tokens: $tokens - Temp: $temp - Top_k: $topk - Top_p: $topp - Context Size: $contextSize - Repeat Penalty: $repeatP - Seed: $seedChoice\n");  
-$promptFileName = basename($selectedPrePrompt);
-fwrite($fp,"Init Prompt: $promptFileName\n");
-fwrite($fp,"User Prompt: $displayPrompt\n");
-fwrite($fp,"Date: $currentDate\n");
-fwrite($fp, "\r\n");
-fclose($fp);
+if($disableHChoice == 1){
+    $currentDate = date("F j, Y, g:i a"); 
+    $fp = fopen($outputFileName, 'a');  
+    fwrite($fp, "\r");
+    fwrite($fp, "\nNew Generation - Model: $sMN - Tokens: $tokens - Temp: $temp - Top_k: $topk - Top_p: $topp - Context Size: $contextSize - Repeat Penalty: $repeatP - Seed: $seedChoice\n");  
+    $promptFileName = basename($selectedPrePrompt);
+    fwrite($fp,"Init Prompt: $promptFileName\n");
+    fwrite($fp,"User Prompt: $displayPrompt\n");
+    fwrite($fp,"Date: $currentDate\n");
+    fwrite($fp, "\r\n");
+    fclose($fp);
+}
+
 
 chdir('/var/www/html/ziptie/llama.cpp');
 shell_exec("./main -m $selectedModel $selectedRamChoice --keep $keepChoice --seed $seedChoice $threadChoice -n $tokens -c $contextSize $selectedPrefPrompt --n_parts 1 --top_k $topk $selectedEos --top_p $topp -p '$fullPrompt' --repeat_penalty $repeatP --repeat_last_n $lastNPChoice --temp $temp $selectedTimestamp | tee -a /var/www/html/ziptie/$outputFileName 2>&1");
