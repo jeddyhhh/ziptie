@@ -14,26 +14,26 @@ This web-ui is only for one shot prompts and does not use the interactive mode, 
 <b>Install instructions/commands (clean install of Ubuntu server or WSL)</b>:<br>
 <b>Note for WSL users:</b> It's possible to access WSL linux files from `\\wsl.localhost` in Windows Explorer, you may not want to install the vsftpd package.<br>
 
-sudo apt update<br>
-sudo apt install apache2 php libapache2-mod-php git build-essential vsftpd<br>
+`sudo apt update`<br>
+`sudo apt install apache2 php libapache2-mod-php git build-essential vsftpd`<br>
 
-sudo ufw allow "Apache Full"<br>
-sudo nano /etc/vsftpd.conf - enable write<br>
+`sudo ufw allow "Apache Full"`<br>
+`sudo nano /etc/vsftpd.conf` - enable write<br>
 
-cd /var/www/html<br>
-sudo git clone https://github.com/jeddyhhh/ziptie<br>
-cd ziptie<br>
-./installLlama.sh<br>
+`cd /var/www/html`<br>
+`sudo git clone https://github.com/jeddyhhh/ziptie`<br>
+`cd ziptie`<br>
+`./installLlama.sh`<br>
 
-Transfer model files via ftp to /var/www/html/ziptie/llama.cpp/models/["model-name"]/["model-name"].bin<br>
-Example: /var/www/html/ziptie/llama.cpp/models/vicuna-7b/ggml-model-q4_0.bin<br>
+Transfer model files via ftp to `/var/www/html/ziptie/llama.cpp/models/["model-name"]/["model-name"].bin`<br>
+Example: `/var/www/html/ziptie/llama.cpp/models/vicuna-7b/ggml-model-q4_0.bin`<br>
 <b>WSL Users: </b>You can go to `\\wsl.localhost\["distro-name"]\var\www\html\ziptie\llama.cpp\models` then drag and drop model folders to here.<br>
 ["distro-name"] is usually `Ubuntu`<br>
 
-sudo chown -R ["yourusername"]:www-data /var/www/html/ziptie<br>
-sudo chmod -R 775 /var/www/html/ziptie<br>
-sudo service apache2 restart<br>
-sudo service vsftpd restart<br>
+`sudo chown -R ["yourusername"]:www-data /var/www/html/ziptie`<br>
+`sudo chmod -R 775 /var/www/html/ziptie`<br>
+`sudo service apache2 restart`<br>
+`sudo service vsftpd restart`<br>
 
 go to http://localhost/ziptie to use ziptie<br>
 
