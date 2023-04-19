@@ -18,7 +18,7 @@ This web-ui is only for one shot prompts and does not use the interactive mode, 
 `sudo apt install apache2 php libapache2-mod-php git build-essential vsftpd`<br>
 
 `sudo ufw allow "Apache Full"`<br>
-`sudo nano /etc/vsftpd.conf` - uncomment write_enable=YES and save<br>
+`sudo nano /etc/vsftpd.conf` - uncomment `write_enable=YES` and save<br>
 
 `cd /var/www/html`<br>
 `sudo git clone https://github.com/jeddyhhh/ziptie`<br>
