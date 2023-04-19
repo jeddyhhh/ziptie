@@ -47,7 +47,7 @@ WSL doesn't auto start services, so you have to make a startWSLServer.bat:<br>
 wsl sudo service apache2 start<br>
 wsl sudo service vsftpd start<br>
 WSL is now running in the background with the web server/ftp server, you can now go to http://localhost/ziptie<br>
-.bat files from these scripts are in includes/wsl_scripts<br>
+.bat files for these scripts are in includes/wsl_scripts<br>
 
 <b>To update ziptie:</b><br>
 run updateZiptie.sh
