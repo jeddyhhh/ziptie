@@ -9,7 +9,7 @@ A web interface for llama.cpp cli written in js, jQuery and php.
   ziptiebot - a i5 2400 with 8gb of RAM running 7b models, also what ziptie was developed on.
 </p>
 
-I wrote this interface because the version of llama.cpp that oogabooga web-ui (at the time, not sure if this has changed) uses doesn't compile correcly for older processes without AVX2 support, the current mainline llama.cpp (which is command line only) does compile and run correctly on older processors but I didn't want to use cli to interact with the program.
+I wrote this interface because the version of llama.cpp that oogabooga web-ui (at the time, not sure if this has changed) uses doesn't compile correctly for older processors without AVX2 support, the current mainline llama.cpp (which is command line only) does compile and run correctly on older processors but I didn't want to use cli to interact with the program.
 
 This web-ui is only for one shot prompts and does not use the interactive mode, it will take 1 prompt and generate text until it runs out of tokens.
 
