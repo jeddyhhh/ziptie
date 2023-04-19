@@ -169,6 +169,7 @@ session_start();
           <br>
           <button id='killPrompt' onclick='killPrompt();'>Kill Bot Generation</button>
           Alt. Output file name: <input type='text' id='altOutputName' value=''></input>
+          <button id='saveSettings' onclick="openAltOutputFile();">Open Alt. Output file in new tab</button>
         </div>
 
       </div>

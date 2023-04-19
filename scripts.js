@@ -149,6 +149,11 @@ function disableSubmitButton(){
     $('#promptSubmit').hide();
 }
 
+function openAltOutputFile(){
+    var url = $("#altOutputName").val();
+    window.open(url, '_blank');
+}
+
 //saves settings, grabs the data via jQuery and bundles them into a request for saveSettings.php which then saves them as a .txt file.
 function saveSettings(data){
     $('#outputNameAppend').val("");
