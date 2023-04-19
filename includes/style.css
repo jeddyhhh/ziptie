@@ -48,6 +48,12 @@ body{ background-image: url("images/1.png"); }
     color: white;
 }
 
+#avaliableOutputLabel{
+    color: black;
+    background-color: white;
+    padding-bottom: 2px;
+}
+
 .img1 {
     background-image: url('images/1.png');
 }
