@@ -1,0 +1,3 @@
+Some text is provided below. Given the text, extract keywords from the text. Avoid stopwords.
+%~%USERPROMPT%~%
+Provide keywords in the following comma-separated format: 'KEYWORDS: <keywords>'
