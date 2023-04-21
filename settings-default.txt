@@ -1,5 +1,5 @@
-Write a screenplay set in the world of "Seinfeld", the gang gets into trouble, make it funny.
-1000
+Write a screenplay set in the world of "Seinfeld", the gang get up to trouble, make it funny.
+3000
 0.9
 50
 0.8
@@ -7,18 +7,20 @@ Write a screenplay set in the world of "Seinfeld", the gang gets into trouble, m
 
 2048
 1.2
-1
+2
 2
 2
 -1
 1024
 -1
 1
-2
+-1
 100000
 
-img1
+img18
 24px
-font2
+
 undefined
 output-default.txt
+1
+
