@@ -54,6 +54,10 @@ body{ background-image: url("images/1.png"); }
     padding-bottom: 2px;
 }
 
+#promptSubmit, #killPrompt{
+    width: 130px;
+}
+
 .img1 {
     background-image: url('images/1.png');
 }
