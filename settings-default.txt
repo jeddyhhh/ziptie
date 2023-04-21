@@ -7,7 +7,7 @@ Write a screenplay set in the world of "Seinfeld", the gang get up to trouble, m
 
 2048
 1.2
-2
+1
 2
 2
 -1
