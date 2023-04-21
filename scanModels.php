@@ -27,8 +27,6 @@ foreach($modelArray as $modelFileName) {
         $txt = "$modelName~$modelFileName\n";
         fwrite($myfile, $txt);
         fclose($myfile);
-
-        shell_exec("chmod -R 775 $modelFileName");
     }
 }
 

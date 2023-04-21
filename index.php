@@ -20,16 +20,16 @@ session_start();
         <div id='serverOutput' class="font1">
         </div>
       </div>
-      <font id='checkScreenPause' style='display:none'>Screen is paused.</font>
-      <font id='checkScreenResume' style='display:none;'>Screen is running.</font>
-      <button id='pauseOutput' onclick='pauseOutput();'>Pause Output Display</button>
-      <button id='resumeOutput' onclick='resumeOutput();'>Resume Output Display</button>
-      <button id='viewOutputArchive' onclick='viewOutputArchive();'>View Output Archive (opens new tab)</button>
+      <font id='checkScreenPause' style='display:none'>Display is paused.</font>
+      <font id='checkScreenResume' style='display:none;'>Display is running.</font>
+      <button id='pauseOutput' onclick='pauseOutput();'>Pause Display</button>
+      <button id='resumeOutput' onclick='resumeOutput();'>Resume Display</button>
+      <button id='viewOutputArchive' onclick='viewOutputArchive();'>View Display Archive</button>
       <?php
       $filename = 'avaliableOutputs.txt';
       $eachlines = file($filename, FILE_IGNORE_NEW_LINES);
       ?>
-      <font id='avaliableOutputLabel'>Avaliable Output Files:</font><select id="selectOutput">
+      <font id='avaliableOutputLabel'>Display Files:</font><select id="selectOutput">
           <?php
             foreach($eachlines as $lines){
               $outputName = $lines;
@@ -39,8 +39,8 @@ session_start();
       </select>
       <button id='outputFontSmaller' style='float:right; display:inline'>Font \/</button>
       <button id='outputFontBigger' style='float:right; display:inline'>Font /\</button>
-      <button id='changeOutputFont' style='float:right; display:inline'>Change Screen Font</button>
-      <button id='changeBackgroundButton' style='float:right; display:inline'>Change Site Background</button>
+      <button id='changeOutputFont' style='float:right; display:inline'>Change Display Font</button>
+      <button id='changeBackgroundButton' style='float:right; display:inline'>Change Background</button>
       
       <br>
       <br>
@@ -68,7 +68,7 @@ session_start();
               }
             ?>
         </select>
-        <button id='reloadSettingsButton' onclick='window.location.reload();'>Reload All Settings</button>
+        <button id='reloadSettingsButton' onclick='window.location.reload();'>Reload/Rescan All Settings/Models and Prompts</button>
         <br>
         <?php
         $filename = 'avaliableModels.txt';

@@ -366,5 +366,5 @@ function reloadChat3(){
 var timeout3 = setInterval(reloadChat3, 5000);
 
 //rescans outputs and settings every page load.
-rescanOutputs();rescanSettings();
+rescanOutputs();rescanSettings();rescanPrompts();rescanModels();
 

@@ -26,6 +26,7 @@ $outputNameAppend = $_GET['var24'];
 $saveName = $_GET['var25'];
 $saveAsMode = $_GET['var26'];
 $disableHChoice = $_GET['var27'];
+$altOutputName = $_GET['var28'];
 
 if($outputNameAppend == ""){
     $temp2 = str_replace('settings-', '', $saveName);
@@ -79,7 +80,8 @@ fwrite($myfile, "$fontSize\n");
 fwrite($myfile, "$fontType\n");
 fwrite($myfile, "$alChoice\n");
 fwrite($myfile, "$outputNameAppend\n");
-fwrite($myfile, "$disableHChoice");
+fwrite($myfile, "$disableHChoice\n");
+fwrite($myfile, "$altOutputName\n");
 fclose($myfile);
 
 //save text
