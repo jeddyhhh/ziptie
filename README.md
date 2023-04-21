@@ -33,7 +33,7 @@ Transfer model files via ftp to `/var/www/html/ziptie/llama.cpp/models/["model-n
 Example: `/var/www/html/ziptie/llama.cpp/models/vicuna-7b/ggml-model-q4_0.bin`<br>
 <b>WSL Users: </b>You can go to `\\wsl.localhost\["distro-name"]\var\www\html\ziptie\llama.cpp\models` then drag and drop model folders to here.<br>
 `["distro-name"]` is usually `Ubuntu`.<br>
-<b>Ubuntu Server users: </b>Everytime you transfer a new model or prompt you need to run the `sudo chmod -R 775 /var/www/html/ziptie` command before rescanning within ziptie.<br>
+<b>Ubuntu Server users: </b>Everytime you transfer a new model or prompt you need to run the<br> `sudo chmod -R 775 /var/www/html/ziptie`<br> command before rescanning within ziptie.<br>
 
 `sudo service apache2 restart`<br>
 `sudo service vsftpd restart`<br>
