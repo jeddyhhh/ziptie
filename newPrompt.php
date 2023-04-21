@@ -81,12 +81,15 @@ if(filesize($filename) > $outputTxtSize){
     shell_exec("rm /var/www/html/ziptie/$outputNameAppend");
 }
 
-// if(shell_exec("pgrep -l main") == true){
-//     shell_exec("sudo pkill main");
-//     if(shell_exec("pgrep -l main") == true){
-//         shell_exec("sudo pkill main");
-//     }
-// }
+if(strpos(file_get_contents($selectedPrePrompt),"%~%USERPROMPT%~%") !== false) {
+    $filename = $selectedPrePrompt;
+    $eachlines = file($filename, FILE_IGNORE_NEW_LINES);
+    foreach($eachlines as $lines){
+        $fullPrompt = str_replace("%~%USERPROMPT%~%", $prompt, $lines);
+        $fullPrompt = htmlspecialchars($fullPrompt, ENT_QUOTES);
+    }
+    
+}
 
 $outputFileName = "$outputNameAppend";
 
