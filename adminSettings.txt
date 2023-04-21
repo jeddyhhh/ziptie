@@ -1,6 +1,7 @@
 SubmitPromptLock=off
 KillGenerationLock=off
 OutputLock=off
+SaveAsDefaultLock=on
 TokensLock=
 ThreadsLock=
 ModelLock=

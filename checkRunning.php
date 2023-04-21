@@ -26,6 +26,12 @@ if(shell_exec("pgrep -l main") == true){
             echo "<script>$('#tokens').prop('disabled', true);</script>";
         }
 
+        if($settingName == "SaveAsDefaultLock" && $settingValue == "on"){
+            echo "<script>document.getElementById('saveAsDefaultSettings').disabled = true;</script>";
+        } else if($settingName == "SaveAsDefaultLock" && $settingValue == "off"){
+            echo "<script>document.getElementById('saveAsDefaultSettings').enabled = true;</script>";
+        }
+
         if($settingName == "ThreadsLock" && $settingValue > 0){
             echo "<script>$('#threadChoice').val('$settingValue');</script>";
             echo "<script>$('#threadChoice').prop('disabled', true);</script>";
@@ -123,6 +129,12 @@ if(shell_exec("pgrep -l main") == true){
             echo "<script>document.getElementById('selectOutput').enabled = true;</script>";
             echo "<script>document.getElementById('outputNameAppend').enabled = true;</script>";
             echo "<script>document.getElementById('outputTxtSize').enabled = true;</script>";
+        }
+
+        if($settingName == "SaveAsDefaultLock" && $settingValue == "on"){
+            echo "<script>document.getElementById('saveAsDefaultSettings').disabled = true;</script>";
+        } else if($settingName == "SaveAsDefaultLock" && $settingValue == "off"){
+            echo "<script>document.getElementById('saveAsDefaultSettings').enabled = true;</script>";
         }
 
     }
