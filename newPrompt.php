@@ -84,11 +84,12 @@ if(filesize($filename) > $outputTxtSize){
 if(strpos(file_get_contents($selectedPrePrompt),"%~%USERPROMPT%~%") !== false) {
     $filename = $selectedPrePrompt;
     $eachlines = file($filename, FILE_IGNORE_NEW_LINES);
+    $fullPrompt = "";
     foreach($eachlines as $lines){
-        $fullPrompt = str_replace("%~%USERPROMPT%~%", $prompt, $lines);
-        $fullPrompt = htmlspecialchars($fullPrompt, ENT_QUOTES);
+        $fullPrompt .= "$lines\n";
+        $fullPrompt = str_replace("%~%USERPROMPT%~%", $prompt, $fullPrompt);
     }
-    
+    $fullPrompt = htmlspecialchars($fullPrompt, ENT_QUOTES);
 }
 
 $outputFileName = "$outputNameAppend";
