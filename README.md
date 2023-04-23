@@ -42,7 +42,7 @@ go to http://localhost/ziptie (or http://"server-ip-address"/ziptie) to use zipt
 You can change site settings in adminSettings.txt, there is options to lock certain setting fields and set a default setting file to be loaded on startup.<br>
 
 <b>Quick Start:</b><br>
-1. On very first load, hit the "Reload All Settings" button (click it a few times for max reliability), this will scan the models and prompts you have transfered and put them into a list for the website to read.<br>
+1. On very first load, hit the "Reload/Rescan All Settings/Models and Prompts" button (click it a few times for max reliability), this will scan the models and prompts you have transfered and put them into a list for the website to read.<br>
 2. Edit any parameters in settings and hit "Save". (Selecting "Save as Default" will change the default settings file to be loaded on startup)<br>
 3. You can now hit "Submit Prompt", it will now start generating text.<br>
 
