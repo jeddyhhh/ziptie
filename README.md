@@ -25,6 +25,7 @@ This web-ui is only for one shot prompts and does not use the interactive mode, 
 `cd /var/www/html`<br>
 `sudo git clone https://github.com/jeddyhhh/ziptie`<br>
 `cd ziptie`<br>
+`sudo service vsftpd restart`<br>
 `sudo chown -R ["yourusername"]:www-data /var/www/html/ziptie`<br>
 `sudo chmod -R 775 /var/www/html/ziptie`<br>
 `./installLlama.sh`<br>
@@ -36,7 +37,6 @@ Example: `/var/www/html/ziptie/llama.cpp/models/vicuna-7b/ggml-model-q4_0.bin`<b
 <b>Ubuntu Server users: </b>Everytime you transfer a new model or prompt you need to run the<br> `sudo chmod -R 775 /var/www/html/ziptie` command before rescanning within ziptie.<br>
 
 `sudo service apache2 restart`<br>
-`sudo service vsftpd restart`<br>
 
 go to http://localhost/ziptie (or http://"server-ip-address"/ziptie) to use ziptie.<br>
 You can change site settings in adminSettings.txt, there is options to lock certain setting fields and set a default setting file to be loaded on startup.<br>
