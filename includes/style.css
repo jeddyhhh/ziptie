@@ -58,6 +58,25 @@ body{ background-image: url("images/1.png"); }
     width: 130px;
 }
 
+#screenOutputMain{
+    width: 100%;
+    display: inline-block;
+}
+
+#displayFullPrompt{
+    float: right;
+    width: 50%;
+}
+
+#displayFullPromptText{
+    width: 100%;
+    height: calc(50% + 20px);
+}
+
+#hideDisplayFullPrompt{
+    display: none;
+}
+
 .img1 {
     background-image: url('images/1.png');
 }
