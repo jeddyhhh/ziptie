@@ -154,6 +154,23 @@ function openAltOutputFile(){
     window.open(url, '_blank');
 }
 
+function displayFullPrompt(){
+    selectedPrompt = $('#selectPrePrompt').val();
+    loadedFontSize = $("#loadedFontSize").val();
+    $('#displayFullPrompt').load("loadPromptDisplay.php?var1=" + selectedPrompt + "&var2=" + loadedFontSize + "&t=" + time);
+    $("#sOD").css({"width": "50%", "display":"inline-block"});
+    $("#showDisplayFullPrompt").hide();
+    $("#hideDisplayFullPrompt").show();
+    $('#displayFullPrompt').show();
+}
+
+function hideFullPrompt(){
+    $("#showDisplayFullPrompt").show();
+    $("#hideDisplayFullPrompt").hide();
+    $('#displayFullPrompt').hide();
+    $("#sOD").css("width", "100%");
+}
+
 //saves settings, grabs the data via jQuery and bundles them into a request for saveSettings.php which then saves them as a .txt file.
 function saveSettings(data){
     $('#outputNameAppend').val("");
@@ -232,7 +249,7 @@ function loadSetDefaultSettings(){
     }
 }
 
-//loads settings from a file which was set in the loadSetDefaultSettings function, uses JQuery to place data in the correct places.
+//loads settings from a file, uses JQuery to place data in the correct places.
 function loadSettings(){
     rescanPrompts();
     rescanModels();

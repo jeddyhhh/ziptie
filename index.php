@@ -17,8 +17,10 @@ session_start();
     <div id='mainDiv'>
 
       <div id='screenOutputMain'>
-        <div id='serverOutput' class="font1">
+        <div id='sOD'>
+          <div id='serverOutput' class="font1"></div>
         </div>
+        <div id='displayFullPrompt'></div>
       </div>
       <font id='checkScreenPause' style='display:none'>Display is paused.</font>
       <font id='checkScreenResume' style='display:none;'>Display is running.</font>
@@ -101,10 +103,11 @@ session_start();
               }
             ?>
         </select>
-          
+        <button id='showDisplayFullPrompt' onclick='displayFullPrompt();'>Display Full Prompt</button>
+        <button id='hideDisplayFullPrompt' onclick='hideFullPrompt();'>Hide Full Prompt</button>
         <br>
 
-        Prefix Prompt (not required): <input type='text' id='prefPromptText' value=''></input>
+        Prompt (not required): <input type='text' id='prefPromptText' value=''></input>
         <br>
         User Prompt:
         <br>
