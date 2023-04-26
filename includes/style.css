@@ -73,7 +73,7 @@ body{ background-image: url("images/1.png"); }
     height: calc(50% + 20px);
 }
 
-#hideDisplayFullPrompt{
+#hideDisplayFullPrompt, #newPromptFilename, #saveFullPromptButton, #createNewPromptFileLabel{
     display: none;
 }
 
