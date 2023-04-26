@@ -106,7 +106,7 @@ session_start();
         <button id='showDisplayFullPrompt' onclick='displayFullPrompt()'>Display Full Prompt</button>
         <button id='hideDisplayFullPrompt' onclick='hideFullPrompt()'>Hide Full Prompt</button>
         <font id='createNewPromptFileLabel'>Save as: </font>
-        <input type='text' id='newPromptFilename' value='user-prompt-1.txt'></input>
+        <input type='text' id='newPromptFilename' value='user-pre-prompt-1.txt'></input>
         <button id='saveFullPromptButton' onclick='saveEditedPrompt()'>Save Prompt</button>
         <button id='createNewPromptButton' onclick='createNewPrompt()'>Create New Pre Prompt</button>
         
