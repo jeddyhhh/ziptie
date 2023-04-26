@@ -108,11 +108,11 @@ session_start();
         <font id='createNewPromptFileLabel'>Save as: </font>
         <input type='text' id='newPromptFilename' value='user-pre-prompt-1.txt'></input>
         <button id='saveFullPromptButton' onclick='saveEditedPrompt()'>Save Prompt</button>
-        <button id='createNewPromptButton' onclick='createNewPrompt()'>Create New Pre Prompt</button>
+        <button id='createNewPromptButton' onclick='createNewPrompt()'>Create New Init Prompt</button>
         
         <br>
 
-        Prompt (not required): <input type='text' id='prefPromptText' value=''></input>
+        Prefix Prompt (not required): <input type='text' id='prefPromptText' value=''></input>
         <br>
         User Prompt:
         <br>
