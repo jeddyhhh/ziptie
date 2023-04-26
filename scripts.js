@@ -138,10 +138,21 @@ function rescanSettings(){
     $('#serverOutput').load('getSettings.php?t=' + time);
 }
 
-//clears output name on click of the new settings name field.
+
 $(document).ready(function() {
+    //clears output name on click of the new settings name field.
     $('#saveSettingName').click(function(e) {
         $('#outputNameAppend').val("");
+    });
+
+    $("#displayFullPrompt").hide();
+
+    $('#selectPrePrompt').on('change', function() {
+        if($("#displayFullPrompt").is(":visible")){
+            selectedPrompt2 = $('#selectPrePrompt').val();
+            loadedFontSize2 = $("#loadedFontSize").val();
+            $('#displayFullPrompt').load("loadPromptDisplay.php?var1=" + selectedPrompt2 + "&var2=" + loadedFontSize2 + "&t=" + time);
+        }
     });
 });
 
@@ -162,13 +173,39 @@ function displayFullPrompt(){
     $("#showDisplayFullPrompt").hide();
     $("#hideDisplayFullPrompt").show();
     $('#displayFullPrompt').show();
+    $("#saveFullPromptButton").show();
 }
 
 function hideFullPrompt(){
     $("#showDisplayFullPrompt").show();
     $("#hideDisplayFullPrompt").hide();
+    $("#saveFullPromptButton").hide();
     $('#displayFullPrompt').hide();
     $("#sOD").css("width", "100%");
+}
+
+function saveEditedPrompt(){
+    editedPrompt = $("#displayFullPromptText").val();
+    selectedPrompt = $('#selectPrePrompt').val();
+    newPromptFilename = $('#newPromptFilename').val()
+    editedPrompt = encodeURI(editedPrompt);
+    editedPrompt = editedPrompt.replace(/#/g, '%23');
+    selectedPrompt = encodeURI(selectedPrompt);
+    console.log(selectedPrompt);
+    $("#serverOutput").load("savePrompt.php?var1=" + editedPrompt + "&var2=" + selectedPrompt + "&var3=" + newPromptFilename);
+}
+
+function createNewPrompt(){
+    $("#sOD").css({"width": "50%", "display":"inline-block"});
+    $("#createNewPromptFileLabel").show();
+    $("#newPromptFilename").show();
+    $('#displayFullPrompt').show();
+    $("#saveFullPromptButton").show();
+    $("#createNewPromptButton").hide();
+    $("#showDisplayFullPrompt").hide();
+    selectedPrompt3 = "llama.cpp/prompts/no-pre-prompt.txt";
+    loadedFontSize3 = $("#loadedFontSize").val();
+    $('#displayFullPrompt').load("loadPromptDisplay.php?var1=" + selectedPrompt3 + "&var2=" + loadedFontSize3 + "&t=" + time);
 }
 
 //saves settings, grabs the data via jQuery and bundles them into a request for saveSettings.php which then saves them as a .txt file.
