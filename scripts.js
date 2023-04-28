@@ -83,6 +83,7 @@ function submitPrompt(){
     disableHChoice = $('input[name="disableHChoice"]:checked').val();
     altOutputName = $('#altOutputName').val();
     pT = encodeURI(pT);
+    pT = pT.replace(/#/g, '%23');
     prefPrompt = encodeURI(prefPrompt);
 
     $('#serverOutput').load('newPrompt.php?var1=' + pT + '&var2=' + tokens + '&var3=' + temp + '&var4=' + topk + '&var5=' + topp + '&var6=' + promptType + '&var7=' + modelType 
@@ -206,6 +207,11 @@ function createNewPrompt(){
     selectedPrompt3 = "llama.cpp/prompts/no-pre-prompt.txt";
     loadedFontSize3 = $("#loadedFontSize").val();
     $('#displayFullPrompt').load("loadPromptDisplay.php?var1=" + selectedPrompt3 + "&var2=" + loadedFontSize3 + "&t=" + time);
+}
+
+function genRandomSeed(){
+    randomNumber = Math.floor(Math.random() * 99999999);
+    $('#seedChoice').val(randomNumber);
 }
 
 //saves settings, grabs the data via jQuery and bundles them into a request for saveSettings.php which then saves them as a .txt file.

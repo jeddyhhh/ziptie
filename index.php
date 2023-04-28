@@ -1,4 +1,5 @@
 <!-- ZIPTIE: a llama.cpp web-ui written in Javascript, jQuery and PHP - Jed Hyndman 2023 -->
+<!-- llama.cpp - https://github.com/ggerganov/llama.cpp -->
 <?php
 session_start();
 ?>
@@ -131,7 +132,8 @@ session_start();
         Top_k: <input type="number" id="topk" min="1" max="100" value='50'></input>
         Top_p: <input type="number" id="topp" min="0.1" max="1.0" value='0.9'></input>
         Repeat Penalty: <input type="number" id="repeatP" min="0.1" max="2.0" value='1.2'></input>
-        Seed: <input type="number" id="seedChoice" min="1" max="99999999" value='-1'></input> (-1 = random seed)
+        Seed: <input type="number" id="seedChoice" min="1" max="99999999" value='-1'></input> (-1 = unknown random seed)
+        <button id='genRandomSeed' onclick='genRandomSeed()'>Generate Random Seed</button>
         <br>
         Keep Model in RAM (No swap usage)?: <input type="radio" id="ramChoice1" name="ramChoice" value="1" checked="checked" />
                             <label for="ramChoice1">No</label>
