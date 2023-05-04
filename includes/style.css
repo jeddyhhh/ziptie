@@ -81,6 +81,10 @@ body{ background-image: url("images/1.png"); }
     width: 70px;
 }
 
+#serverOutput{
+    background-color: white;
+}
+
 .img1 {
     background-image: url('images/1.png');
 }
