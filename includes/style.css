@@ -77,6 +77,10 @@ body{ background-image: url("images/1.png"); }
     display: none;
 }
 
+#estimateTokenDisplay{
+    width: 70px;
+}
+
 .img1 {
     background-image: url('images/1.png');
 }
