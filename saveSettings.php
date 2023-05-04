@@ -31,6 +31,10 @@ $useRandomSeed = $_GET['var29'];
 $mirostat_N = $_GET['var30'];
 $mirostat_LR = $_GET['var31'];
 $mirostat_E = $_GET['var32'];
+$presPen = $_GET['var33'];
+$freqPen = $_GET['var34'];
+$tfs = $_GET['var35'];
+$tSampling = $_GET['var36'];
 
 if($outputNameAppend == ""){
     $temp2 = str_replace('settings-', '', $saveName);
@@ -90,6 +94,10 @@ fwrite($myfile, "$useRandomSeed\n");
 fwrite($myfile, "$mirostat_N\n");
 fwrite($myfile, "$mirostat_LR\n");
 fwrite($myfile, "$mirostat_E\n");
+fwrite($myfile, "$presPen\n");
+fwrite($myfile, "$freqPen\n");
+fwrite($myfile, "$tfs\n");
+fwrite($myfile, "$tSampling\n");
 fclose($myfile);
 
 //save text

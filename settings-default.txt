@@ -3,8 +3,8 @@ undefined
 0.9
 50
 0.8
-/var/www/html/ziptie/prompts/chat-with-vicuna.txt
-/var/www/html/ziptie/llama.cpp/models/wizardLM-13b-ggml-4bit/ggml-model-q5_1.bin
+
+
 2048
 1.2
 1
@@ -14,9 +14,9 @@ undefined
 2048
 
 1
--1
+1
 100000
-
+undefined
 img6
 24px
 
@@ -28,3 +28,7 @@ gamertag.html
 0
 0.1
 5.0
+0.0
+0.0
+1.0
+1.0

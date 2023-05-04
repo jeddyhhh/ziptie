@@ -115,8 +115,8 @@ session_start();
         
         <br>
 
-        Prefix Prompt (not required): <input type='text' id='prefPromptText' value=''></input>
-        <br>
+        <!-- Prefix Prompt (not required): <input type='text' id='prefPromptText' value=''></input> -->
+        <!-- <br> -->
         <!-- User Prompt:
         <br>
         <input type='text' id='promptText' rows='2' value=''></input>
@@ -133,8 +133,11 @@ session_start();
         Top_k: <input type="number" id="topk" min="1" max="100" value='50'></input>
         Top_p: <input type="number" id="topp" min="0.1" max="1.0" value='0.9'></input>
         Repeat Penalty: <input type="number" id="repeatP" min="0.1" max="2.0" value='1.2'></input>
-        Seed: <input type="number" id="seedChoice" min="1" max="99999999" value='-1'></input>
+        TFS: <input type="number" id="tfs" min="1.0" max="100" value='1.0'></input>
+        Typical Sampling: <input type="number" id="tSampling" min="1.0" max="100" value='1.0'></input>
         <!-- <button id='genRandomSeed' onclick='genRandomSeed()'>Generate Random Seed</button> -->
+        <br>
+        Seed: <input type="number" id="seedChoice" min="1" max="99999999" value='-1'></input>
         Use Random Seed?: <input type="radio" id="randomSeedChoice1" name="randomSeedChoice" value="1"  />
                           <label for="randomSeedChoice1">No</label>
 
@@ -144,6 +147,8 @@ session_start();
         Mirostat: <input type="number" id="mirostat_N" min="0" max="2" value='0'></input>
         Mirostat LR: <input type="number" id="mirostat_LR" min="0" max="100" value='0.1'></input>
         Mirostat Entropy: <input type="number" id="mirostat_E" min="0" max="100" value='5.0'></input>
+        Presence Penalty: <input type="number" id="pres_pen" min="0" max="100" value='0.0'></input>
+        Freq Penalty: <input type="number" id="freq_pen" min="0" max="100" value='0.0'></input>
         <br>
         Keep Model in RAM (No swap usage)?: <input type="radio" id="ramChoice1" name="ramChoice" value="1" checked="checked" />
                             <label for="ramChoice1">No</label>

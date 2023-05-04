@@ -25,6 +25,10 @@ $useRandomSeed = $_GET['var23'];
 $mirostat_N = $_GET['var24'];
 $mirostat_LR = $_GET['var25'];
 $mirostat_E = $_GET['var26'];
+$presPen = $_GET['var27'];
+$freqPen = $_GET['var28'];
+$tfs = $_GET['var29'];
+$tSampling = $_GET['var30'];
 
 $url = urldecode($prompt);
 $prompt = str_replace('%20', ' ', $url);
@@ -121,5 +125,5 @@ if($altOutputName !== ''){
 
 
 chdir('/var/www/html/ziptie/llama.cpp');
-shell_exec("./main -m $selectedModel $selectedRamChoice --keep $keepChoice --mirostat $mirostat_N --mirostat_lr $mirostat_LR --mirostat_ent $mirostat_E --seed $seedChoice $threadChoice -n $tokens -c $contextSize $selectedPrefPrompt --n_parts 1 --top_k $topk $selectedEos --top_p $topp -p '$fullPrompt' --repeat_penalty $repeatP --repeat_last_n $lastNPChoice --temp $temp $selectedTimestamp $altOutputName | tee -a /var/www/html/ziptie/$outputFileName 2>&1");
+shell_exec("./main -m $selectedModel $selectedRamChoice --keep $keepChoice --mirostat $mirostat_N --mirostat_lr $mirostat_LR --mirostat_ent $mirostat_E --presence_penalty $presPen --frequency_penalty $freqPen --tfs $tfs --typical $tSampling --seed $seedChoice $threadChoice -n $tokens -c $contextSize $selectedPrefPrompt --n_parts 1 --top_k $topk $selectedEos --top_p $topp -p '$fullPrompt' --repeat_penalty $repeatP --repeat_last_n $lastNPChoice --temp $temp $selectedTimestamp $altOutputName | tee -a /var/www/html/ziptie/$outputFileName 2>&1");
 ?>

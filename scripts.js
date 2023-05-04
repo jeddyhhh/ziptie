@@ -181,18 +181,24 @@ function submitPrompt(){
     mirostat_N = $("#mirostat_N").val();
     mirostat_LR = $("#mirostat_LR").val();
     mirostat_E = $("#mirostat_E").val();
+    presPen = $("#pres_pen").val();
+    freqPen = $("#freq_pen").val();
+    tfs = $('#tfs').val(); 
+    tSampling = $('#tSampling').val(); 
 
     saveEditedPrompt();
 
     $('#serverOutput').load('newPrompt.php?var1=' + pT + '&var2=' + tokens + '&var3=' + temp + '&var4=' + topk + '&var5=' + topp + '&var6=' + promptType + '&var7=' + modelType 
     + '&var8=' + contextSize + '&var9=' + repeatP + '&var10=' + ramChoice + '&var11=' + eosChoice + '&var12=' + stampChoice + '&var13=' + keepChoice + '&var14=' + lastNPChoice
     + '&var15=' + seedChoice + '&var16=' + randomPrompt + '&var17=' + threadChoice + '&var18=' + outputTxtSize + '&var19=' + prefPrompt + '&var20=' + outputNameAppend
-    + "&var21=" + disableHChoice + "&var22=" + altOutputName + "&var23=" + useARandomSeed + "&var24=" + mirostat_N + "&var25=" + mirostat_LR + "&var26=" + mirostat_E);
+    + "&var21=" + disableHChoice + "&var22=" + altOutputName + "&var23=" + useARandomSeed + "&var24=" + mirostat_N + "&var25=" + mirostat_LR + "&var26=" + mirostat_E
+    + "&var27=" + presPen + "&var28=" + freqPen + "&var29=" + tfs + "&var30=" + tSampling);
 
     console.log('newPrompt.php?var1=' + pT + '&var2=' + tokens + '&var3=' + temp + '&var4=' + topk + '&var5=' + topp + '&var6=' + promptType + '&var7=' + modelType 
     + '&var8=' + contextSize + '&var9=' + repeatP + '&var10=' + ramChoice + '&var11=' + eosChoice + '&var12=' + stampChoice + '&var13=' + keepChoice + '&var14=' + lastNPChoice
     + '&var15=' + seedChoice + '&var16=' + randomPrompt + '&var17=' + threadChoice + '&var18=' + outputTxtSize + '&var19=' + prefPrompt + '&var20=' + outputNameAppend
-    + "&var21=" + disableHChoice + "&var22=" + altOutputName  + "&var23=" + useARandomSeed + "&var24=" + mirostat_N + "&var25=" + mirostat_LR + "&var26=" + mirostat_E);
+    + "&var21=" + disableHChoice + "&var22=" + altOutputName  + "&var23=" + useARandomSeed + "&var24=" + mirostat_N + "&var25=" + mirostat_LR + "&var26=" + mirostat_E
+    + "&var27=" + presPen + "&var28=" + freqPen + "&var29=" + tfs + "&var30=" + tSampling);
 
     $("#selectOutput").val(outputNameAppend);
 }
@@ -378,7 +384,11 @@ function saveSettings(data){
     useARandomSeed = $('input[name="randomSeedChoice"]:checked').val();
     mirostat_N = $('#mirostat_N').val(); 
     mirostat_LR = $('#mirostat_LR').val(); 
-    mirostat_E = $('#mirostat_E').val(); 
+    mirostat_E = $('#mirostat_E').val();
+    presencePenalty = $('#pres_pen').val(); 
+    freqPenalty = $('#freq_pen').val(); 
+    tfs = $('#tfs').val(); 
+    tSampling = $('#tSampling').val(); 
 
     outputName = saveName;
     outputName = outputName.replace('.txt', '');
@@ -397,7 +407,8 @@ function saveSettings(data){
     + '&var8=' + contextSize + '&var9=' + repeatP + '&var10=' + ramChoice + '&var11=' + eosChoice + '&var12=' + stampChoice + '&var13=' + keepChoice + '&var14=' + lastNPChoice
     + '&var15=' + seedChoice + '&var16=' + randomPrompt + '&var17=' + threadChoice + '&var18=' + outputTxtSize + '&var19=' + prefPrompt + '&var20=' + backgroundImage + '&var21=' + fontSize
     + '&var22=' + fontType + '&var23=' + autoLoad + '&var24=' + outputName + '&var25=' + saveName + '&var26=' + saveAsMode + '&var27=' + disableHChoice
-    + '&var28=' + altOutputName + '&var29=' + useARandomSeed + '&var30=' + mirostat_N + '&var31=' + mirostat_LR + '&var32=' + mirostat_E);
+    + '&var28=' + altOutputName + '&var29=' + useARandomSeed + '&var30=' + mirostat_N + '&var31=' + mirostat_LR + '&var32=' + mirostat_E + '&var33=' + presencePenalty + '&var34=' + freqPenalty
+    + '&var35=' + tfs + '&var36=' + tSampling);
 
     $('#outputNameAppend').val(outputName);
 }
@@ -497,6 +508,12 @@ function loadSettings(){
       $('#mirostat_N').val([lines[27]]);
       $('#mirostat_LR').val([lines[28]]);
       $('#mirostat_E').val([lines[29]]);
+
+      $("#pres_pen").val([lines[30]]);
+      $("#freq_pen").val([lines[31]]);
+
+      $('#tfs').val([lines[32]]); 
+      $('#tSampling').val([lines[33]]); 
     });
 }
 
