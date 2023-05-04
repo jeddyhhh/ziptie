@@ -1,4 +1,4 @@
-Write a screenplay set in the world of "Seinfeld", the gang get up to trouble, make it funny.
+undefined
 3000
 0.9
 50
@@ -9,18 +9,19 @@ Write a screenplay set in the world of "Seinfeld", the gang get up to trouble, m
 1.2
 1
 2
-2
+1
 -1
-1024
--1
+2048
+
 1
 -1
 100000
 
-img18
+img6
 24px
 
 undefined
 output-default.txt
 1
-
+gamertag.html
+2
