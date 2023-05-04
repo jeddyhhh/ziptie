@@ -28,6 +28,9 @@ $saveAsMode = $_GET['var26'];
 $disableHChoice = $_GET['var27'];
 $altOutputName = $_GET['var28'];
 $useRandomSeed = $_GET['var29'];
+$mirostat_N = $_GET['var30'];
+$mirostat_LR = $_GET['var31'];
+$mirostat_E = $_GET['var32'];
 
 if($outputNameAppend == ""){
     $temp2 = str_replace('settings-', '', $saveName);
@@ -84,6 +87,9 @@ fwrite($myfile, "$outputNameAppend\n");
 fwrite($myfile, "$disableHChoice\n");
 fwrite($myfile, "$altOutputName\n");
 fwrite($myfile, "$useRandomSeed\n");
+fwrite($myfile, "$mirostat_N\n");
+fwrite($myfile, "$mirostat_LR\n");
+fwrite($myfile, "$mirostat_E\n");
 fclose($myfile);
 
 //save text

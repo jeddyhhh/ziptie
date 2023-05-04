@@ -178,18 +178,21 @@ function submitPrompt(){
     pT = pT.replace(/#/g, '%23');
     prefPrompt = encodeURI(prefPrompt);
     useARandomSeed = $('input[name="randomSeedChoice"]:checked').val();
+    mirostat_N = $("#mirostat_N").val();
+    mirostat_LR = $("#mirostat_LR").val();
+    mirostat_E = $("#mirostat_E").val();
 
     saveEditedPrompt();
 
     $('#serverOutput').load('newPrompt.php?var1=' + pT + '&var2=' + tokens + '&var3=' + temp + '&var4=' + topk + '&var5=' + topp + '&var6=' + promptType + '&var7=' + modelType 
     + '&var8=' + contextSize + '&var9=' + repeatP + '&var10=' + ramChoice + '&var11=' + eosChoice + '&var12=' + stampChoice + '&var13=' + keepChoice + '&var14=' + lastNPChoice
     + '&var15=' + seedChoice + '&var16=' + randomPrompt + '&var17=' + threadChoice + '&var18=' + outputTxtSize + '&var19=' + prefPrompt + '&var20=' + outputNameAppend
-    + "&var21=" + disableHChoice + "&var22=" + altOutputName + "&var23=" + useARandomSeed);
+    + "&var21=" + disableHChoice + "&var22=" + altOutputName + "&var23=" + useARandomSeed + "&var24=" + mirostat_N + "&var25=" + mirostat_LR + "&var26=" + mirostat_E);
 
     console.log('newPrompt.php?var1=' + pT + '&var2=' + tokens + '&var3=' + temp + '&var4=' + topk + '&var5=' + topp + '&var6=' + promptType + '&var7=' + modelType 
     + '&var8=' + contextSize + '&var9=' + repeatP + '&var10=' + ramChoice + '&var11=' + eosChoice + '&var12=' + stampChoice + '&var13=' + keepChoice + '&var14=' + lastNPChoice
     + '&var15=' + seedChoice + '&var16=' + randomPrompt + '&var17=' + threadChoice + '&var18=' + outputTxtSize + '&var19=' + prefPrompt + '&var20=' + outputNameAppend
-    + "&var21=" + disableHChoice + "&var22=" + altOutputName  + "&var23=" + useARandomSeed);
+    + "&var21=" + disableHChoice + "&var22=" + altOutputName  + "&var23=" + useARandomSeed + "&var24=" + mirostat_N + "&var25=" + mirostat_LR + "&var26=" + mirostat_E);
 
     $("#selectOutput").val(outputNameAppend);
 }
@@ -373,6 +376,9 @@ function saveSettings(data){
     disableHChoice = $('input[name="disableHChoice"]:checked').val();
     altOutputName = $('#altOutputName').val(); 
     useARandomSeed = $('input[name="randomSeedChoice"]:checked').val();
+    mirostat_N = $('#mirostat_N').val(); 
+    mirostat_LR = $('#mirostat_LR').val(); 
+    mirostat_E = $('#mirostat_E').val(); 
 
     outputName = saveName;
     outputName = outputName.replace('.txt', '');
@@ -391,7 +397,7 @@ function saveSettings(data){
     + '&var8=' + contextSize + '&var9=' + repeatP + '&var10=' + ramChoice + '&var11=' + eosChoice + '&var12=' + stampChoice + '&var13=' + keepChoice + '&var14=' + lastNPChoice
     + '&var15=' + seedChoice + '&var16=' + randomPrompt + '&var17=' + threadChoice + '&var18=' + outputTxtSize + '&var19=' + prefPrompt + '&var20=' + backgroundImage + '&var21=' + fontSize
     + '&var22=' + fontType + '&var23=' + autoLoad + '&var24=' + outputName + '&var25=' + saveName + '&var26=' + saveAsMode + '&var27=' + disableHChoice
-    + '&var28=' + altOutputName + '&var29=' + useARandomSeed);
+    + '&var28=' + altOutputName + '&var29=' + useARandomSeed + '&var30=' + mirostat_N + '&var31=' + mirostat_LR + '&var32=' + mirostat_E);
 
     $('#outputNameAppend').val(outputName);
 }
@@ -486,6 +492,11 @@ function loadSettings(){
 
       $('input[name="disableHChoice"]').val([lines[24]]);
       $('#altOutputName').val([lines[25]]); 
+      $('input[name="randomSeedChoice"]').val([lines[26]]);
+
+      $('#mirostat_N').val([lines[27]]);
+      $('#mirostat_LR').val([lines[28]]);
+      $('#mirostat_E').val([lines[29]]);
     });
 }
 

@@ -141,6 +141,10 @@ session_start();
                           <input type="radio" id="randomSeedChoice2" name="randomSeedChoice" value="2" checked="checked" />
                           <label for="randomSeedChoice2">Yes</label>
         <br>
+        Mirostat: <input type="number" id="mirostat_N" min="0" max="2" value='0'></input>
+        Mirostat LR: <input type="number" id="mirostat_LR" min="0" max="100" value='0.1'></input>
+        Mirostat Entropy: <input type="number" id="mirostat_E" min="0" max="100" value='5.0'></input>
+        <br>
         Keep Model in RAM (No swap usage)?: <input type="radio" id="ramChoice1" name="ramChoice" value="1" checked="checked" />
                             <label for="ramChoice1">No</label>
 
