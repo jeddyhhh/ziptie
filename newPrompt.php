@@ -21,6 +21,7 @@ $prefPrompt = $_GET['var19'];
 $outputNameAppend = $_GET['var20'];
 $disableHChoice = $_GET['var21'];
 $altOutputName = $_GET['var22'];
+$useRandomSeed = $_GET['var23'];
 
 $url = urldecode($prompt);
 $prompt = str_replace('%20', ' ', $url);
@@ -57,9 +58,9 @@ if($randomPrompt == 2){
     $displayPrompt = "~~~Pre/User prompts ignored, random output~~~";
 } else {
     $prePromptContents = file_get_contents($selectedPrePrompt);
-    $fullPrompt = "$prePromptContents $prompt";
+    $fullPrompt = "$prePromptContents";
     $fullPrompt  = htmlspecialchars($fullPrompt, ENT_QUOTES);
-    $displayPrompt = $prompt;
+    $displayPrompt = $fullPrompt;
 }
 
 if($tChoice > 0){
@@ -74,23 +75,27 @@ if($prefPrompt != ''){
     $selectedPrefPrompt = '';
 }
 
+if($useRandomSeed == 2){
+    $seedChoice = rand(1, 99999999);
+}
+
 $filename = "/var/www/html/ziptie/$outputNameAppend";
 if(filesize($filename) > $outputTxtSize){
     $randomNumber = time();
-    shell_exec("cp /var/www/html/ziptie/$outputNameAppend /var/www/html/ziptie/output-$outputNameAppend-$randomNumber.txt");
+    shell_exec("cp /var/www/html/ziptie/$outputNameAppend /var/www/html/ziptie/$outputNameAppend-$randomNumber.txt");
     shell_exec("rm /var/www/html/ziptie/$outputNameAppend");
 }
 
-if(strpos(file_get_contents($selectedPrePrompt),"%~%USERPROMPT%~%") !== false) {
-    $filename = $selectedPrePrompt;
-    $eachlines = file($filename, FILE_IGNORE_NEW_LINES);
-    $fullPrompt = "";
-    foreach($eachlines as $lines){
-        $fullPrompt .= "$lines\n";
-        $fullPrompt = str_replace("%~%USERPROMPT%~%", $prompt, $fullPrompt);
-    }
-    $fullPrompt = htmlspecialchars($fullPrompt, ENT_QUOTES);
-}
+// if(strpos(file_get_contents($selectedPrePrompt),"%~%USERPROMPT%~%") !== false) {
+//     $filename = $selectedPrePrompt;
+//     $eachlines = file($filename, FILE_IGNORE_NEW_LINES);
+//     $fullPrompt = "";
+//     foreach($eachlines as $lines){
+//         $fullPrompt .= "$lines\n";
+//         $fullPrompt = str_replace("%~%USERPROMPT%~%", $prompt, $fullPrompt);
+//     }
+//     $fullPrompt = htmlspecialchars($fullPrompt, ENT_QUOTES);
+// }
 
 $outputFileName = "$outputNameAppend";
 
@@ -101,7 +106,7 @@ if($disableHChoice == 1){
     fwrite($fp, "\nNew Generation - Model: $sMN - Tokens: $tokens - Temp: $temp - Top_k: $topk - Top_p: $topp - Context Size: $contextSize - Repeat Penalty: $repeatP - Seed: $seedChoice\n");  
     $promptFileName = basename($selectedPrePrompt);
     fwrite($fp,"Init Prompt: $promptFileName\n");
-    fwrite($fp,"User Prompt: $displayPrompt\n");
+    //fwrite($fp,"User Prompt: $displayPrompt\n");
     fwrite($fp,"Date: $currentDate\n");
     fwrite($fp, "\r\n");
     fclose($fp);

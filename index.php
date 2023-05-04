@@ -21,7 +21,7 @@ session_start();
         <div id='sOD'>
           <div id='serverOutput' class="font1"></div>
         </div>
-        <div id='displayFullPrompt'></div>
+        <div id='displayFullPrompt' class="font1"></div>
       </div>
       <font id='checkScreenPause' style='display:none'>Display is paused.</font>
       <font id='checkScreenResume' style='display:none;'>Display is running.</font>
@@ -94,7 +94,7 @@ session_start();
         $filename2 = 'avaliablePrompts.txt';
         $eachlines2 = file($filename2, FILE_IGNORE_NEW_LINES);
         ?>
-        Init Prompt: <select id="selectPrePrompt">
+        Prompt: <select id="selectPrePrompt">
             <?php
               foreach($eachlines2 as $lines){
                 $prompt = explode("~", $lines);
@@ -104,27 +104,28 @@ session_start();
               }
             ?>
         </select>
+        Est. Token Length: <input type='number' id='estimateTokenDisplay'></input>
         <button id='showDisplayFullPrompt' onclick='displayFullPrompt()'>Display Full Prompt</button>
         <button id='hideDisplayFullPrompt' onclick='hideFullPrompt()'>Hide Full Prompt</button>
         <font id='createNewPromptFileLabel'>Save as: </font>
         <input type='text' id='newPromptFilename' value='user-pre-prompt-1.txt'></input>
-        <button id='saveFullPromptButton' onclick='saveEditedPrompt()'>Save Prompt</button>
-        <button id='createNewPromptButton' onclick='createNewPrompt()'>Create New Init Prompt</button>
+        <button id='saveEditedPromptButton' onclick='saveEditedPrompt()'>Save Edited Prompt</button>
+        <button id='saveNewPromptButton' onclick='saveNewUserPrompt()'>Save New Prompt</button>
+        <button id='createNewPromptButton' onclick='createNewPrompt()'>Create New Prompt</button>
         
         <br>
 
         Prefix Prompt (not required): <input type='text' id='prefPromptText' value=''></input>
         <br>
-        User Prompt:
+        <!-- User Prompt:
         <br>
-        <input type='text' id='promptText' rows='2' value='Write a screenplay set in the world of "Seinfeld", the gang gets up to mischief, make it funny.'></input>
-        <br>
+        <input type='text' id='promptText' rows='2' value=''></input>
+        <br> -->
         Generate Random Prompt? (Ignores all init and user prompts):  <input type="radio" id="randomPrompt1" name="randomPrompt" value="1" checked="checked" />
                                   <label for="randomPrompt1">No</label>
 
                                   <input type="radio" id="randomPrompt2" name="randomPrompt" value="2" />
                                   <label for="randomPrompt2">Yes</label>
-        <br>
         <br>
         Tokens: <input type="number" id="tokens" min="10" max="10000" value='1000'></input>
         Context Size: <input type="number" id="cSize" min="1" max="2048" value='2048'></input>
@@ -132,8 +133,13 @@ session_start();
         Top_k: <input type="number" id="topk" min="1" max="100" value='50'></input>
         Top_p: <input type="number" id="topp" min="0.1" max="1.0" value='0.9'></input>
         Repeat Penalty: <input type="number" id="repeatP" min="0.1" max="2.0" value='1.2'></input>
-        Seed: <input type="number" id="seedChoice" min="1" max="99999999" value='-1'></input> (-1 = unknown random seed)
-        <button id='genRandomSeed' onclick='genRandomSeed()'>Generate Random Seed</button>
+        Seed: <input type="number" id="seedChoice" min="1" max="99999999" value='-1'></input>
+        <!-- <button id='genRandomSeed' onclick='genRandomSeed()'>Generate Random Seed</button> -->
+        Use Random Seed?: <input type="radio" id="randomSeedChoice1" name="randomSeedChoice" value="1"  />
+                          <label for="randomSeedChoice1">No</label>
+
+                          <input type="radio" id="randomSeedChoice2" name="randomSeedChoice" value="2" checked="checked" />
+                          <label for="randomSeedChoice2">Yes</label>
         <br>
         Keep Model in RAM (No swap usage)?: <input type="radio" id="ramChoice1" name="ramChoice" value="1" checked="checked" />
                             <label for="ramChoice1">No</label>

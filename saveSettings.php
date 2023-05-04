@@ -27,6 +27,7 @@ $saveName = $_GET['var25'];
 $saveAsMode = $_GET['var26'];
 $disableHChoice = $_GET['var27'];
 $altOutputName = $_GET['var28'];
+$useRandomSeed = $_GET['var29'];
 
 if($outputNameAppend == ""){
     $temp2 = str_replace('settings-', '', $saveName);
@@ -82,6 +83,7 @@ fwrite($myfile, "$alChoice\n");
 fwrite($myfile, "$outputNameAppend\n");
 fwrite($myfile, "$disableHChoice\n");
 fwrite($myfile, "$altOutputName\n");
+fwrite($myfile, "$useRandomSeed\n");
 fclose($myfile);
 
 //save text
