@@ -85,6 +85,10 @@ body{ background-image: url("images/1.png"); }
     background-color: white;
 }
 
+#tfs, #tSampling{
+    width: 50px;
+}
+
 .img1 {
     background-image: url('images/1.png');
 }
