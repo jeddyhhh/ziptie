@@ -186,7 +186,7 @@ function submitPrompt(){
     tfs = $('#tfs').val(); 
     tSampling = $('#tSampling').val(); 
 
-    saveEditedPrompt();
+    //saveEditedPrompt();
 
     $('#serverOutput').load('newPrompt.php?var1=' + pT + '&var2=' + tokens + '&var3=' + temp + '&var4=' + topk + '&var5=' + topp + '&var6=' + promptType + '&var7=' + modelType 
     + '&var8=' + contextSize + '&var9=' + repeatP + '&var10=' + ramChoice + '&var11=' + eosChoice + '&var12=' + stampChoice + '&var13=' + keepChoice + '&var14=' + lastNPChoice
