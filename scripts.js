@@ -152,7 +152,7 @@ function viewOutputArchive(){
 
 //submit prompt
 function submitPrompt(){
-    pT = $('#promptText').val();
+    pT = $('#displayFullPromptText').val();
     tokens = $('#tokens').val();
     temp = $('#temp').val();
     topk = $('#topk').val();

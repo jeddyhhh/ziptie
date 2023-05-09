@@ -61,14 +61,15 @@ if($timestamp == 1){
 }
 
 if($randomPrompt == 2){
-    $fullPrompt == "--random-prompt";
+    $prompt == "--random-prompt";
     $displayPrompt = "~~~Pre/User prompts ignored, random output~~~";
-} else {
-    $prePromptContents = file_get_contents($selectedPrePrompt);
-    $fullPrompt = "$prePromptContents";
-    $fullPrompt  = htmlspecialchars($fullPrompt, ENT_QUOTES);
-    $displayPrompt = $fullPrompt;
 }
+// } else {
+//     $prePromptContents = file_get_contents($selectedPrePrompt);
+//     $fullPrompt = "$prePromptContents";
+//     $fullPrompt  = htmlspecialchars($fullPrompt, ENT_QUOTES);
+//     $displayPrompt = $fullPrompt;
+// }
 
 if($tChoice > 0){
     $threadChoice = "--threads $tChoice";
@@ -123,7 +124,10 @@ if($altOutputName !== ''){
     $altOutputName = "| tee /var/www/html/ziptie/$altOutputName";
 }
 
+$prompt  = htmlspecialchars($prompt, ENT_QUOTES);
+//$prompt = "$prompt";
+
 
 chdir('/var/www/html/ziptie/llama.cpp');
-shell_exec("./main -m $selectedModel $selectedRamChoice --keep $keepChoice --mirostat $mirostat_N --mirostat_lr $mirostat_LR --mirostat_ent $mirostat_E --presence_penalty $presPen --frequency_penalty $freqPen --tfs $tfs --typical $tSampling --seed $seedChoice $threadChoice -n $tokens -c $contextSize $selectedPrefPrompt --n_parts 1 --top_k $topk $selectedEos --top_p $topp -p '$fullPrompt' --repeat_penalty $repeatP --repeat_last_n $lastNPChoice --temp $temp $selectedTimestamp $altOutputName | tee -a /var/www/html/ziptie/$outputFileName 2>&1");
+shell_exec("./main -m $selectedModel $selectedRamChoice --keep $keepChoice --mirostat $mirostat_N --mirostat_lr $mirostat_LR --mirostat_ent $mirostat_E --presence_penalty $presPen --frequency_penalty $freqPen --tfs $tfs --typical $tSampling --seed $seedChoice $threadChoice -n $tokens -c $contextSize --n_parts 1 --top_k $topk $selectedEos --top_p $topp -p '$prompt' --repeat_penalty $repeatP --repeat_last_n $lastNPChoice --temp $temp $selectedTimestamp $altOutputName | tee -a /var/www/html/ziptie/$outputFileName 2>&1");
 ?>
