@@ -129,5 +129,5 @@ $prompt  = htmlspecialchars($prompt, ENT_QUOTES);
 
 
 chdir('/var/www/html/ziptie/llama.cpp');
-shell_exec("./main -m $selectedModel $selectedRamChoice --keep $keepChoice --mirostat $mirostat_N --mirostat_lr $mirostat_LR --mirostat_ent $mirostat_E --presence_penalty $presPen --frequency_penalty $freqPen --tfs $tfs --typical $tSampling --seed $seedChoice $threadChoice -n $tokens -c $contextSize --n_parts 1 --top_k $topk $selectedEos --top_p $topp -p '$prompt' --repeat_penalty $repeatP --repeat_last_n $lastNPChoice --temp $temp $selectedTimestamp $altOutputName | tee -a /var/www/html/ziptie/$outputFileName 2>&1");
+shell_exec("./main -m $selectedModel $selectedRamChoice --keep $keepChoice --mirostat $mirostat_N --mirostat_lr $mirostat_LR --mirostat_ent $mirostat_E --presence_penalty $presPen --frequency_penalty $freqPen --tfs $tfs --typical $tSampling --seed $seedChoice $threadChoice -n $tokens -c $contextSize --top_k $topk $selectedEos --top_p $topp -p '$prompt' --repeat_penalty $repeatP --repeat_last_n $lastNPChoice --temp $temp $selectedTimestamp $altOutputName | tee -a /var/www/html/ziptie/$outputFileName 2>&1");
 ?>
