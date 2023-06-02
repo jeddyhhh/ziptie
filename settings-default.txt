@@ -3,8 +3,8 @@ undefined
 0.8
 50
 0.8
-/var/www/html/ziptie/prompts/alpaca.txt
-/var/www/html/ziptie/llama.cpp/models/Wizard-Vicuna-30B-Uncensored-ggmlv3-q5_1/Wizard-Vicuna-30B-Uncensored.ggmlv3.q5_1.bin
+
+
 2048
 1.2
 1
@@ -23,7 +23,7 @@ font2
 undefined
 output-default.txt
 1
-seinfeld.html
+
 2
 2
 0.1
