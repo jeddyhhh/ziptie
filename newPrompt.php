@@ -29,6 +29,10 @@ $presPen = $_GET['var27'];
 $freqPen = $_GET['var28'];
 $tfs = $_GET['var29'];
 $tSampling = $_GET['var30'];
+$promptCacheFileName = $_GET['var31'];
+$cacheAll = $_GET['var32'];
+$logitBias = $_GET['var33'];
+$logitBias = str_replace('%2B', '+', $logitBias);
 
 $url = urldecode($prompt);
 $prompt = str_replace('%20', ' ', $url);
@@ -64,6 +68,13 @@ if($randomPrompt == 2){
     $prompt == "--random-prompt";
     $displayPrompt = "~~~Pre/User prompts ignored, random output~~~";
 }
+
+if($cacheAll == 1){
+    $cacheAll = "";
+} else if($cacheAll == 2){
+    $cacheAll = "--prompt-cache-all";
+}
+
 // } else {
 //     $prePromptContents = file_get_contents($selectedPrePrompt);
 //     $fullPrompt = "$prePromptContents";
@@ -127,7 +138,23 @@ if($altOutputName !== ''){
 $prompt  = htmlspecialchars($prompt, ENT_QUOTES);
 //$prompt = "$prompt";
 
+if($promptCacheFileName !== ''){
+    $promptCacheFileName = "--prompt-cache /var/www/html/ziptie/promptCache/$promptCacheFileName";
+} else {
+    $promptCacheFileName = '';
+}
+
+if($logitBias !== ''){
+    $logitBiasString = '';
+    $logitArray = explode(',', $logitBias);
+    foreach ($logitArray as $value) {
+        $logitBiasString = "$logitBiasString --logit-bias $value";
+    }
+}
+
+error_log($logitBias);
 
 chdir('/var/www/html/ziptie/llama.cpp');
-shell_exec("./main -m $selectedModel $selectedRamChoice --keep $keepChoice --mirostat $mirostat_N --mirostat_lr $mirostat_LR --mirostat_ent $mirostat_E --presence_penalty $presPen --frequency_penalty $freqPen --tfs $tfs --typical $tSampling --seed $seedChoice $threadChoice -n $tokens -c $contextSize --top_k $topk $selectedEos --top_p $topp -p '$prompt' --repeat_penalty $repeatP --repeat_last_n $lastNPChoice --temp $temp $selectedTimestamp $altOutputName | tee -a /var/www/html/ziptie/$outputFileName 2>&1");
+error_log("./main -m $selectedModel $selectedRamChoice $cacheAll $promptCacheFileName $logitBiasString --keep $keepChoice --mirostat $mirostat_N --mirostat_lr $mirostat_LR --mirostat_ent $mirostat_E --presence_penalty $presPen --frequency_penalty $freqPen --tfs $tfs --typical $tSampling --seed $seedChoice $threadChoice -n $tokens -c $contextSize --top_k $topk $selectedEos --top_p $topp -p '$prompt' --repeat_penalty $repeatP --repeat_last_n $lastNPChoice --temp $temp $selectedTimestamp $altOutputName | tee -a /var/www/html/ziptie/$outputFileName 2>&1");
+shell_exec("./main -m $selectedModel $selectedRamChoice $cacheAll $promptCacheFileName $logitBiasString --keep $keepChoice --mirostat $mirostat_N --mirostat_lr $mirostat_LR --mirostat_ent $mirostat_E --presence_penalty $presPen --frequency_penalty $freqPen --tfs $tfs --typical $tSampling --seed $seedChoice $threadChoice -n $tokens -c $contextSize --top_k $topk $selectedEos --top_p $topp -p '$prompt' --repeat_penalty $repeatP --repeat_last_n $lastNPChoice --temp $temp $selectedTimestamp $altOutputName | tee -a /var/www/html/ziptie/$outputFileName 2>&1");
 ?>

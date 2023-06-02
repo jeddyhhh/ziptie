@@ -150,6 +150,43 @@ session_start();
         Presence Penalty: <input type="number" id="pres_pen" min="0" max="100" value='0.0'></input>
         Freq Penalty: <input type="number" id="freq_pen" min="0" max="100" value='0.0'></input>
         <br>
+        Prompt cache file name (.bin): <input type='text' id='promptCacheFileName' value=''></input>
+        Cache all prompts?: <input type="radio" id="promptCacheAllChoice1" name="promptCacheAllChoice" value="1" checked="checked" />
+                          <label for="promptCacheAllChoice1">No</label>
+
+                          <input type="radio" id="promptCacheAllChoice2" name="promptCacheAllChoice" value="2" />
+                          <label for="promptCacheAllChoice2">Yes</label>
+        <br>
+        Logit Bias (use comma to seperate): <input type='text' id='logitBias' value=''></input>
+        <?php
+        // $filename = 'avaliableLoRaAdapters.txt';
+        // $eachlines = file($filename, FILE_IGNORE_NEW_LINES);
+        ?>
+        <!-- LoRa Adapter: <select id="selectLoraAdapter"> -->
+            <?php
+            //   foreach($eachlines as $lines){
+            //     $lAdapter = explode("~", $lines);
+            //     $lAdapterName = $lAdapter[0];
+            //     $lAdapterFileName = $lAdapter[1];
+            //     echo "<option value='".$lAdapterFileName."'>$lAdapterName</option>";
+            //   }
+            // ?>
+        <!-- </select> -->
+        <?php
+        // $filename = 'avaliableLoRaBases.txt';
+        // $eachlines = file($filename, FILE_IGNORE_NEW_LINES);
+        ?>
+        <!-- LoRa Base: <select id="selectLoraBase"> -->
+            <?php
+              // foreach($eachlines as $lines){
+              //   $lBase = explode("~", $lines);
+              //   $lBaseName = $lBase[0];
+              //   $lBaseFileName = $lBase[1];
+              //   echo "<option value='".$lBaseFileName."'>$lBaseName</option>";
+              // }
+            ?>
+        <!-- </select> -->
+        <br>
         Keep Model in RAM (No swap usage)?: <input type="radio" id="ramChoice1" name="ramChoice" value="1" checked="checked" />
                             <label for="ramChoice1">No</label>
 

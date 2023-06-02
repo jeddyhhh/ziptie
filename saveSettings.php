@@ -35,6 +35,10 @@ $presPen = $_GET['var33'];
 $freqPen = $_GET['var34'];
 $tfs = $_GET['var35'];
 $tSampling = $_GET['var36'];
+$promptCacheFileName = $_GET['var37'];
+$cacheAll = $_GET['var38'];
+$logitBias = $_GET['var39'];
+$logitBias = str_replace('%2B', '+', $logitBias);
 
 if($outputNameAppend == ""){
     $temp2 = str_replace('settings-', '', $saveName);
@@ -98,6 +102,9 @@ fwrite($myfile, "$presPen\n");
 fwrite($myfile, "$freqPen\n");
 fwrite($myfile, "$tfs\n");
 fwrite($myfile, "$tSampling\n");
+fwrite($myfile, "$promptCacheFileName\n");
+fwrite($myfile, "$cacheAll\n");
+fwrite($myfile, "$logitBias\n");
 fclose($myfile);
 
 //save text

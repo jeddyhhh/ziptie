@@ -185,6 +185,10 @@ function submitPrompt(){
     freqPen = $("#freq_pen").val();
     tfs = $('#tfs').val(); 
     tSampling = $('#tSampling').val(); 
+    promptCacheFileName = $('#promptCacheFileName').val();
+    cacheAll = $('input[name="promptCacheAllChoice"]:checked').val();
+    logitBias = $('#logitBias').val();
+    logitBias = logitBias.replace(/\+/g, "%2B");
 
     //saveEditedPrompt();
 
@@ -192,13 +196,13 @@ function submitPrompt(){
     + '&var8=' + contextSize + '&var9=' + repeatP + '&var10=' + ramChoice + '&var11=' + eosChoice + '&var12=' + stampChoice + '&var13=' + keepChoice + '&var14=' + lastNPChoice
     + '&var15=' + seedChoice + '&var16=' + randomPrompt + '&var17=' + threadChoice + '&var18=' + outputTxtSize + '&var19=' + prefPrompt + '&var20=' + outputNameAppend
     + "&var21=" + disableHChoice + "&var22=" + altOutputName + "&var23=" + useARandomSeed + "&var24=" + mirostat_N + "&var25=" + mirostat_LR + "&var26=" + mirostat_E
-    + "&var27=" + presPen + "&var28=" + freqPen + "&var29=" + tfs + "&var30=" + tSampling);
+    + "&var27=" + presPen + "&var28=" + freqPen + "&var29=" + tfs + "&var30=" + tSampling + "&var31=" + promptCacheFileName + "&var32=" + cacheAll + "&var33=" + logitBias);
 
     console.log('newPrompt.php?var1=' + pT + '&var2=' + tokens + '&var3=' + temp + '&var4=' + topk + '&var5=' + topp + '&var6=' + promptType + '&var7=' + modelType 
     + '&var8=' + contextSize + '&var9=' + repeatP + '&var10=' + ramChoice + '&var11=' + eosChoice + '&var12=' + stampChoice + '&var13=' + keepChoice + '&var14=' + lastNPChoice
     + '&var15=' + seedChoice + '&var16=' + randomPrompt + '&var17=' + threadChoice + '&var18=' + outputTxtSize + '&var19=' + prefPrompt + '&var20=' + outputNameAppend
     + "&var21=" + disableHChoice + "&var22=" + altOutputName  + "&var23=" + useARandomSeed + "&var24=" + mirostat_N + "&var25=" + mirostat_LR + "&var26=" + mirostat_E
-    + "&var27=" + presPen + "&var28=" + freqPen + "&var29=" + tfs + "&var30=" + tSampling);
+    + "&var27=" + presPen + "&var28=" + freqPen + "&var29=" + tfs + "&var30=" + tSampling + "&var31=" + promptCacheFileName + "&var32=" + cacheAll + "&var33=" + logitBias);
 
     $("#selectOutput").val(outputNameAppend);
 }
@@ -242,6 +246,10 @@ function rescanOutputs(){
 function rescanSettings(){
     $('#serverOutput').load('getSettings.php?t=' + time);
 }
+
+// function rescanLoRas(){
+//     $('#serverOutput').load('scanLoRas.php?t=' + time);
+// }
 
 // function findPromptTokens(){
 //     console.log("findPromptTokenRunning");
@@ -389,6 +397,10 @@ function saveSettings(data){
     freqPenalty = $('#freq_pen').val(); 
     tfs = $('#tfs').val(); 
     tSampling = $('#tSampling').val(); 
+    promptCacheFileName = $("#promptCacheFileName").val();
+    cacheAll = $('input[name="promptCacheAllChoice"]:checked').val();
+    logitBias = $('#logitBias').val();
+    logitBias = logitBias.replace(/\+/g, "%2B");
 
     outputName = saveName;
     outputName = outputName.replace('.txt', '');
@@ -408,7 +420,7 @@ function saveSettings(data){
     + '&var15=' + seedChoice + '&var16=' + randomPrompt + '&var17=' + threadChoice + '&var18=' + outputTxtSize + '&var19=' + prefPrompt + '&var20=' + backgroundImage + '&var21=' + fontSize
     + '&var22=' + fontType + '&var23=' + autoLoad + '&var24=' + outputName + '&var25=' + saveName + '&var26=' + saveAsMode + '&var27=' + disableHChoice
     + '&var28=' + altOutputName + '&var29=' + useARandomSeed + '&var30=' + mirostat_N + '&var31=' + mirostat_LR + '&var32=' + mirostat_E + '&var33=' + presencePenalty + '&var34=' + freqPenalty
-    + '&var35=' + tfs + '&var36=' + tSampling);
+    + '&var35=' + tfs + '&var36=' + tSampling + '&var37=' + promptCacheFileName + "&var38=" + cacheAll + "&var39=" + logitBias);
 
     $('#outputNameAppend').val(outputName);
 }
@@ -514,6 +526,9 @@ function loadSettings(){
 
       $('#tfs').val([lines[32]]); 
       $('#tSampling').val([lines[33]]); 
+      $('#promptCacheFileName').val(lines[34]);
+      $('input[name="promptCacheAllChoice"]').val([lines[35]]);
+      $('#logitBias').val(lines[36].replace("%2B", "+"));
     });
 }
 
@@ -551,5 +566,5 @@ function reloadTokenCount(){
 var timeout4 = setInterval(reloadTokenCount, 1000);
 
 //rescans outputs and settings every page load.
-rescanOutputs();rescanSettings();rescanPrompts();rescanModels();
+rescanOutputs();rescanSettings();rescanPrompts();rescanModels();//rescanLoRas();
 
